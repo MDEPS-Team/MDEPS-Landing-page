@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <title>Vantage PMO – Registro</title>
+
+    <link rel="stylesheet" href="public/styles/style.css" />
+</head>
+
+<body>
+
+    <!-- Reutiliza ABOUT porque ya tiene layout centrado -->
+    <section class="about">
+
+        <div class="container">
+
+            <div class="about__inner">
+
+                <!-- Card reutilizando pillar-card -->
+                <div class="pillar-card fade-in is-visible">
+
+                    <div class="pillar-card__body">
+
+                        <span class="pillar-card__label">
+                            Paso 01
+                        </span>
+
+                        <h2 class="pillar-card__title">
+                            Crea tu cuenta
+                        </h2>
+
+                        <p class="pillar-card__text">
+                            Únete a nuestra plataforma de gestión de proyectos.
+                        </p>
+
+                        <!-- Reutiliza ai-section__prompts para spacing -->
+                        <form action="/api/register" method="POST" class="ai-section__prompts">
+
+                            <!-- Reutiliza ai-section__input -->
+                            <div class="ai-section__input">
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Nombre completo"
+                                    required
+                                >
+                            </div>
+
+                            <div class="ai-section__input">
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Correo electrónico"
+                                    required
+                                >
+                            </div>
+
+                            <div class="ai-section__input">
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Contraseña"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Reutiliza tu botón existente -->
+                            <button type="submit" class="btn btn--green">
+                                Registrarme
+                            </button>
+
+                        </form>
+
+                        <a href="index.html" class="link-arrow">
+                            Volver al inicio
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Reutiliza media section -->
+                <div class="about__media">
+
+                    <div class="about__image"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section> 
+    <!-- Scripts (orden: i18n → app) -->
+    <script src="public/js/i18n.js"></script>
+    <script src="public/js/main.js"></script>
+</body>
+</html>
