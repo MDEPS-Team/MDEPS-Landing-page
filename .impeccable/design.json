@@ -1,0 +1,634 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-05T22:15:54.887Z",
+  "title": "Design System: Vantage PMO",
+  "extensions": {
+    "colorMeta": {
+      "brand": {
+        "role": "primary",
+        "displayName": "Vantage Blue",
+        "canonical": "#005B9A",
+        "tonalRamp": [
+          "#021A2F",
+          "#012A4A",
+          "#013B64",
+          "#004B7F",
+          "#2573A9",
+          "#639BC2",
+          "#A1C2DA",
+          "#D9E7F1"
+        ]
+      },
+      "brand-deep": {
+        "role": "primary",
+        "displayName": "Deep Vantage Blue",
+        "canonical": "#004A7F",
+        "tonalRamp": [
+          "#021729",
+          "#01243F",
+          "#013054",
+          "#003D6A",
+          "#256492",
+          "#6390B1",
+          "#A1BCD1",
+          "#D9E5EE"
+        ]
+      },
+      "brand-glow": {
+        "role": "primary",
+        "displayName": "Orbit Glow",
+        "canonical": "#5FB0EA",
+        "tonalRamp": [
+          "#152B3F",
+          "#274C6A",
+          "#3A6E94",
+          "#4C8FBF",
+          "#76BBED",
+          "#9CCEF2",
+          "#C2E0F6",
+          "#E5F1FB"
+        ]
+      },
+      "starlight": {
+        "role": "secondary",
+        "displayName": "Starlight",
+        "canonical": "#9FD3FA",
+        "tonalRamp": [
+          "#213242",
+          "#415A70",
+          "#60839E",
+          "#80ABCC",
+          "#ACD9FA",
+          "#C2E3FB",
+          "#D8ECFC",
+          "#ECF5FD"
+        ]
+      },
+      "starlight-bright": {
+        "role": "secondary",
+        "displayName": "Bright Starlight",
+        "canonical": "#C4E5FC",
+        "tonalRamp": [
+          "#293642",
+          "#506271",
+          "#768D9F",
+          "#9DB9CE",
+          "#CCE8FC",
+          "#D8EDFC",
+          "#E5F3FD",
+          "#F1F7FD"
+        ]
+      },
+      "light-ok": {
+        "role": "tertiary",
+        "displayName": "On-Track Mint",
+        "canonical": "#7FE0C9",
+        "tonalRamp": [
+          "#1B3538",
+          "#34605C",
+          "#4D8A81",
+          "#66B5A5",
+          "#91E4D1",
+          "#AFEADE",
+          "#CDF1EB",
+          "#E9F7F7"
+        ]
+      },
+      "light-warn": {
+        "role": "tertiary",
+        "displayName": "At-Risk Amber",
+        "canonical": "#FFB547",
+        "tonalRamp": [
+          "#352C1E",
+          "#674E28",
+          "#9A7133",
+          "#CC933D",
+          "#FEBF62",
+          "#FCD190",
+          "#FAE2BD",
+          "#F8F2E7"
+        ]
+      },
+      "light-bad": {
+        "role": "tertiary",
+        "displayName": "Delayed Coral",
+        "canonical": "#FF7A66",
+        "tonalRamp": [
+          "#352024",
+          "#673735",
+          "#9A4D45",
+          "#CC6456",
+          "#FE8D7D",
+          "#FCADA2",
+          "#FACDC8",
+          "#F8EBEB"
+        ]
+      },
+      "ink-ok": {
+        "role": "tertiary",
+        "displayName": "Mint Ink",
+        "canonical": "#0B7A62",
+        "tonalRamp": [
+          "#042024",
+          "#063733",
+          "#074D43",
+          "#096452",
+          "#2E8D79",
+          "#69ADA0",
+          "#A4CDC7",
+          "#DBEBEA"
+        ]
+      },
+      "ink-warn": {
+        "role": "tertiary",
+        "displayName": "Amber Ink",
+        "canonical": "#8F5600",
+        "tonalRamp": [
+          "#1E1910",
+          "#3A280C",
+          "#573808",
+          "#734704",
+          "#9F6F26",
+          "#B99865",
+          "#D3C1A4",
+          "#EBE6DF"
+        ]
+      },
+      "ink-bad": {
+        "role": "tertiary",
+        "displayName": "Coral Ink",
+        "canonical": "#B33A27",
+        "tonalRamp": [
+          "#251418",
+          "#491D1C",
+          "#6C271F",
+          "#903023",
+          "#BD5747",
+          "#CE877D",
+          "#DFB7B2",
+          "#EFE3E3"
+        ]
+      },
+      "night": {
+        "role": "neutral",
+        "displayName": "Night",
+        "canonical": "#031A30",
+        "tonalRamp": [
+          "#020D1A",
+          "#02101F",
+          "#031425",
+          "#03172A",
+          "#283C4F",
+          "#657482",
+          "#A2ACB5",
+          "#DADFE4"
+        ]
+      },
+      "plate": {
+        "role": "neutral",
+        "displayName": "Plate",
+        "canonical": "#05233F",
+        "tonalRamp": [
+          "#030F1D",
+          "#031425",
+          "#04192E",
+          "#041E36",
+          "#29435C",
+          "#66798B",
+          "#A2AFBB",
+          "#DAE0E6"
+        ]
+      },
+      "plate-raised": {
+        "role": "neutral",
+        "displayName": "Raised Plate",
+        "canonical": "#082C4D",
+        "tonalRamp": [
+          "#03111F",
+          "#04182B",
+          "#061E36",
+          "#072542",
+          "#2C4B67",
+          "#687E93",
+          "#A3B2BF",
+          "#DAE1E8"
+        ]
+      },
+      "on-plate": {
+        "role": "neutral",
+        "displayName": "Engraving White",
+        "canonical": "#EAF3FB",
+        "tonalRamp": [
+          "#303942",
+          "#5F6770",
+          "#8D969F",
+          "#BCC4CD",
+          "#ECF4FB",
+          "#EFF6FC",
+          "#F2F8FC",
+          "#F5F9FD"
+        ]
+      },
+      "on-plate-2": {
+        "role": "neutral",
+        "displayName": "Engraving Dim",
+        "canonical": "#A9C3DB",
+        "tonalRamp": [
+          "#232F3C",
+          "#455464",
+          "#66798B",
+          "#889EB3",
+          "#B5CBE0",
+          "#C8D9E9",
+          "#DCE7F1",
+          "#EEF3F9"
+        ]
+      },
+      "plate-line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(214, 232, 248, 0.14)"
+      },
+      "plate-line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "rgba(214, 232, 248, 0.28)"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#F3F7FB",
+        "tonalRamp": [
+          "#323942",
+          "#626970",
+          "#93989F",
+          "#C3C8CD",
+          "#F4F7FB",
+          "#F5F8FC",
+          "#F6F9FC",
+          "#F7FAFD"
+        ]
+      },
+      "paper-alt": {
+        "role": "neutral",
+        "displayName": "Paper Alt",
+        "canonical": "#E8F0F8",
+        "tonalRamp": [
+          "#303842",
+          "#5E666F",
+          "#8C949D",
+          "#BAC2CA",
+          "#EAF2F9",
+          "#EEF4FA",
+          "#F2F7FB",
+          "#F5F9FC"
+        ]
+      },
+      "paper-surface": {
+        "role": "neutral",
+        "displayName": "Paper Surface",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#353B43",
+          "#676C72",
+          "#9A9DA1",
+          "#CCCED0",
+          "#FEFEFF",
+          "#FCFDFE",
+          "#FAFCFE",
+          "#F8FBFD"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#0A2238",
+        "tonalRamp": [
+          "#040F1B",
+          "#051422",
+          "#07182A",
+          "#081D31",
+          "#2E4256",
+          "#697887",
+          "#A4AEB8",
+          "#DBE0E5"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "#43607C",
+        "tonalRamp": [
+          "#0F1B29",
+          "#1C2C3E",
+          "#293E52",
+          "#364F67",
+          "#5E778F",
+          "#8B9EB0",
+          "#B8C4D0",
+          "#E1E8EE"
+        ]
+      },
+      "paper-line": {
+        "role": "neutral",
+        "displayName": "Ink Hairline",
+        "canonical": "rgba(10, 34, 56, 0.12)"
+      },
+      "paper-line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Ink Hairline",
+        "canonical": "rgba(10, 34, 56, 0.24)"
+      },
+      "sky": {
+        "role": "neutral",
+        "displayName": "Deep Sky",
+        "canonical": "#041F38",
+        "tonalRamp": [
+          "#020E1B",
+          "#031222",
+          "#03172A",
+          "#041B31",
+          "#284056",
+          "#657787",
+          "#A2ADB8",
+          "#DAE0E5"
+        ]
+      },
+      "sky-alt": {
+        "role": "neutral",
+        "displayName": "Sky Alt",
+        "canonical": "#062744",
+        "tonalRamp": [
+          "#03101E",
+          "#041627",
+          "#041B31",
+          "#05213A",
+          "#2A4760",
+          "#667B8E",
+          "#A3B0BC",
+          "#DAE1E7"
+        ]
+      },
+      "sky-surface": {
+        "role": "neutral",
+        "displayName": "Sky Surface",
+        "canonical": "#0A3052",
+        "tonalRamp": [
+          "#041220",
+          "#05192D",
+          "#072139",
+          "#082846",
+          "#2E4E6C",
+          "#698196",
+          "#A4B3C1",
+          "#DBE2E8"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section, story-step and closing titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Pillar, route, plan and post titles."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "KPI values and, scaled up, pricing amounts; tabular."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero and section subheadings in secondary color."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Chips, table heads, readout meta, form labels, nav links; sentence case."
+      }
+    },
+    "shadows": [
+      {
+        "name": "readout-float",
+        "value": "0 18px 40px -18px rgba(0, 0, 0, 0.6)",
+        "purpose": "Small overlays floating on the orrery."
+      },
+      {
+        "name": "card-lift",
+        "value": "0 30px 60px -30px rgba(0, 0, 0, 0.7)",
+        "purpose": "Module faces in the 3D deck; the featured plan uses the same geometry in night at 0.6."
+      },
+      {
+        "name": "instrument-drop",
+        "value": "0 40px 80px -40px rgba(0, 0, 0, 0.8)",
+        "purpose": "The assistant console."
+      },
+      {
+        "name": "nav-glass",
+        "value": "background: rgba(3, 26, 48, 0.82); backdrop-filter: blur(14px) saturate(140%)",
+        "purpose": "Scrolled or open navigation bar."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Default UI response: presses, icon nudges, sheets, panel arrival."
+      },
+      {
+        "name": "ease-arrive",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Entrances, drawn lines, growing bars, hero focus-in."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "3D card turns only."
+      },
+      {
+        "name": "duration-ui",
+        "value": "160ms",
+        "purpose": "Color, border and press transitions."
+      },
+      {
+        "name": "press-scale",
+        "value": "scale(0.97)",
+        "purpose": "Active state for buttons and chips (0.94 for round icon buttons)."
+      },
+      {
+        "name": "focus-in",
+        "value": "from opacity 0, scale(0.96), blur(10px) over 1200ms ease-arrive",
+        "purpose": "Instrument entrance; copy rises 18px from 6px blur over 900ms."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "480px"
+      },
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "860px"
+      },
+      {
+        "name": "nav",
+        "value": "900px"
+      },
+      {
+        "name": "lg",
+        "value": "960px"
+      },
+      {
+        "name": "hero",
+        "value": "1000px"
+      },
+      {
+        "name": "xl",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (paper)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main action on light paper.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Start now <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:.55rem;min-height:44px;padding:0 1.25rem;border-radius:999px;border:1px solid transparent;font-family:Geist,system-ui,sans-serif;font-weight:600;font-size:.97rem;line-height:1;text-decoration:none;transition:background-color 160ms ease,transform 160ms cubic-bezier(.23,1,.32,1)} .ds-btn svg{transition:transform 200ms cubic-bezier(.23,1,.32,1)} .ds-btn-primary{background:#005B9A;color:#fff} .ds-btn-primary:hover{background:#004A7F} .ds-btn:hover svg{transform:translateX(3px)} .ds-btn:active{transform:scale(.97)} .ds-btn:focus-visible{outline:2px solid #005B9A;outline-offset:3px}"
+    },
+    {
+      "name": "Primary Button (plate)",
+      "kind": "button",
+      "refersTo": "button-primary-plate",
+      "description": "Main action on any dark ground: Starlight with night text.",
+      "html": "<div class=\"ds-plate\"><a class=\"ds-btn-plate\" href=\"#\">Start now</a></div>",
+      "css": ".ds-plate{background:#031A30;padding:24px} .ds-btn-plate{display:inline-flex;align-items:center;min-height:44px;padding:0 1.25rem;border-radius:999px;background:#9FD3FA;color:#031A30;font-family:Geist,system-ui,sans-serif;font-weight:600;font-size:.97rem;text-decoration:none;transition:background-color 160ms ease,transform 160ms cubic-bezier(.23,1,.32,1)} .ds-btn-plate:hover{background:#C4E5FC} .ds-btn-plate:active{transform:scale(.97)} .ds-btn-plate:focus-visible{outline:2px solid #9FD3FA;outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Button (plate)",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action: hairline pill.",
+      "html": "<div class=\"ds-plate-g\"><a class=\"ds-btn-ghost\" href=\"#\">See the platform</a></div>",
+      "css": ".ds-plate-g{background:#031A30;padding:24px} .ds-btn-ghost{display:inline-flex;align-items:center;min-height:52px;padding:0 1.6rem;border-radius:999px;border:1px solid rgba(214,232,248,.28);color:#EAF3FB;font-family:Geist,system-ui,sans-serif;font-weight:600;font-size:1.02rem;text-decoration:none;transition:border-color 160ms ease,transform 160ms cubic-bezier(.23,1,.32,1)} .ds-btn-ghost:hover{border-color:#EAF3FB} .ds-btn-ghost:active{transform:scale(.97)} .ds-btn-ghost:focus-visible{outline:2px solid #9FD3FA;outline-offset:3px}"
+    },
+    {
+      "name": "Status Chips",
+      "kind": "chip",
+      "refersTo": "chip-status",
+      "description": "Orrery legend and selector; status light as a dot.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\"><i></i>CRM migration</button><button class=\"ds-chip ds-warn\" aria-pressed=\"false\"><i></i>Data platform</button><button class=\"ds-chip ds-bad\" aria-pressed=\"false\"><i></i>Mobile app</button></div>",
+      "css": ".ds-chips{display:flex;flex-wrap:wrap;gap:.5rem;background:#031A30;padding:24px} .ds-chip{display:inline-flex;align-items:center;gap:.55rem;min-height:44px;padding:0 1rem 0 .85rem;border-radius:999px;border:1px solid rgba(214,232,248,.14);background:none;color:#EAF3FB;font:500 .9rem Geist,system-ui,sans-serif;cursor:pointer;transition:border-color 160ms ease,transform 160ms cubic-bezier(.23,1,.32,1)} .ds-chip i{width:9px;height:9px;border-radius:50%;background:#7FE0C9} .ds-warn i{background:#FFB547} .ds-bad i{background:#FF7A66} .ds-chip:hover{border-color:rgba(214,232,248,.28)} .ds-chip[aria-pressed=\"true\"]{border-color:#9FD3FA;background:rgba(159,211,250,.12)} .ds-chip:active{transform:scale(.97)} .ds-chip:focus-visible{outline:2px solid #9FD3FA;outline-offset:3px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Registration field on paper.",
+      "html": "<label class=\"ds-field\"><span>Work email</span><input type=\"email\" placeholder=\"you@company.com\"></label>",
+      "css": ".ds-field{display:grid;gap:.4rem;font-family:Geist,system-ui,sans-serif;color:#0A2238;max-width:360px} .ds-field span{font-weight:600;font-size:.95rem} .ds-field input{min-height:50px;padding:0 1rem;border-radius:10px;border:1px solid rgba(10,34,56,.24);background:#fff;color:#0A2238;font:inherit;transition:border-color 160ms ease} .ds-field input:focus-visible{outline:2px solid #005B9A;outline-offset:1px;border-color:transparent} .ds-field input[aria-invalid=\"true\"]{border-color:#B33A27}"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Fixed plate bar that turns to night glass on scroll.",
+      "html": "<nav class=\"ds-nav\"><strong class=\"ds-logo\">Vantage PMO</strong><div class=\"ds-links\"><a href=\"#\">Platform</a><a href=\"#\">AI assistant</a><a href=\"#\">Pricing</a></div><a class=\"ds-nav-cta\" href=\"#\">Start now</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:1.5rem;height:68px;padding:0 24px;background:rgba(3,26,48,.82);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(214,232,248,.14);color:#EAF3FB;font-family:Geist,system-ui,sans-serif;} .ds-logo{font-family:\"Bricolage Grotesque\",system-ui,sans-serif;font-weight:700} .ds-links{display:flex;gap:.25rem;margin-inline:auto} .ds-links a{padding:.6rem .85rem;border-radius:999px;text-decoration:none;font-size:.95rem;font-weight:500;color:#A9C3DB;transition:color 160ms ease,background-color 160ms ease} .ds-links a:hover{color:#EAF3FB;background:rgba(214,232,248,.06)} .ds-links a:focus-visible,.ds-nav-cta:focus-visible{outline:2px solid #9FD3FA;outline-offset:3px} .ds-nav-cta{min-height:44px;display:inline-flex;align-items:center;padding:0 1.05rem;border-radius:999px;background:#9FD3FA;color:#031A30;font-weight:600;font-size:.92rem;text-decoration:none} .ds-nav-cta:hover{background:#C4E5FC}"
+    },
+    {
+      "name": "Featured Plan Card",
+      "kind": "card",
+      "refersTo": "card-plan-featured",
+      "description": "A piece of plate inside a paper band.",
+      "html": "<article class=\"ds-plan\"><h3>Business</h3><p class=\"ds-price\"><span>$</span>29<em>/ month</em></p><ul><li>Unlimited projects</li><li>AI assistant</li></ul><a href=\"#\">Start now</a></article>",
+      "css": ".ds-plan{display:flex;flex-direction:column;gap:1.1rem;max-width:340px;padding:2.5rem 2rem;border-radius:24px;background:#031A30;color:#EAF3FB;border:1px solid rgba(159,211,250,.35);box-shadow:0 30px 60px -30px rgba(3,26,48,.6);font-family:Geist,system-ui,sans-serif;} .ds-plan h3{margin:0;font:700 1.6rem/1.05 \"Bricolage Grotesque\",system-ui,sans-serif;letter-spacing:-.02em} .ds-price{margin:0;font:700 3.6rem/1 \"Bricolage Grotesque\",system-ui,sans-serif;letter-spacing:-.04em;font-variant-numeric:tabular-nums} .ds-price span{font-size:1.5rem;vertical-align:top} .ds-price em{font:400 .95rem Geist,system-ui,sans-serif;color:#A9C3DB;margin-left:.5rem} .ds-plan ul{list-style:none;margin:0;padding:1.25rem 0 0;border-top:1px solid rgba(214,232,248,.14);display:grid;gap:.7rem} .ds-plan a{min-height:44px;display:flex;align-items:center;justify-content:center;border-radius:999px;background:#9FD3FA;color:#031A30;font-weight:600;text-decoration:none} .ds-plan a:hover{background:#C4E5FC} .ds-plan a:focus-visible{outline:2px solid #9FD3FA;outline-offset:3px}"
+    },
+    {
+      "name": "Status Board",
+      "kind": "custom",
+      "refersTo": "console",
+      "description": "Assistant console board: status emitted as light with a dot and a label.",
+      "html": "<div class=\"ds-console\"><table class=\"ds-board\"><tr><th>Project</th><th>Progress</th><th>Status</th></tr><tr><td>CRM migration</td><td>72%</td><td><span class=\"ds-state ds-ok\">On track</span></td></tr><tr><td>Data platform</td><td>48%</td><td><span class=\"ds-state ds-warn\">At risk</span></td></tr><tr><td>Mobile app</td><td>31%</td><td><span class=\"ds-state ds-bad\">Delayed</span></td></tr></table></div>",
+      "css": ".ds-console{background:#082C4D;border:1px solid rgba(214,232,248,.14);border-radius:24px;padding:1.4rem;box-shadow:0 40px 80px -40px rgba(0,0,0,.8);color:#EAF3FB;font-family:Geist,system-ui,sans-serif;} .ds-board{width:100%;border-collapse:collapse;font-size:.93rem;font-variant-numeric:tabular-nums} .ds-board th{text-align:left;font-weight:500;color:#A9C3DB;font-size:.82rem;padding:0 0 .6rem} .ds-board td{padding:.7rem 0;border-top:1px solid rgba(214,232,248,.14)} .ds-state{display:inline-flex;align-items:center;gap:.45rem;font-size:.88rem;font-weight:500} .ds-state::before{content:\"\";width:8px;height:8px;border-radius:50%;background:currentColor} .ds-ok{color:#7FE0C9} .ds-warn{color:#FFB547} .ds-bad{color:#FF7A66}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Observatory Plate",
+    "overview": "Vantage means vantage point, and the system is built as an observatory looking down at a portfolio. Projects are bodies on tilted orbits; an orbit's bright arc is progress and a body's light is health. Every surface is one of two materials: the **plate**, a deep Prussian-blue celestial-atlas sheet engraved with white hairlines, a coordinate graticule and fine orbit rings; and the **paper**, a pale blue-tinted sheet that carries the reading content and flips to deep sky in the dark theme. Pages alternate plate and paper bands so the instrument and the explanation take turns.\n\nDensity is calm and editorial: large display headlines with tight tracking, generous section rhythm, and data that is always shown working (live orrery, assistant console, forecast drawn to scale) rather than described. Depth is literal where it matters (a hand-projected 3D orrery, cards that turn in 3D) and flat everywhere else; hairlines do the structural work that shadows would do in a generic SaaS page.\n\nThe world rejects the split hero with a flat dashboard screenshot and a row of identical feature cards; the hero is an instrument the visitor can turn.",
+    "keyCharacteristics": [
+      "Two materials, plate and paper, with the plate fixing its own tokens regardless of theme.",
+      "Status is light (mint, amber, coral glowing on the plate), printed as darker ink on paper.",
+      "Hairline engraving (1px low-alpha white or ink lines) instead of shadows for structure.",
+      "Pill-shaped controls, softly rounded containers, circular nodes and bodies.",
+      "Bricolage Grotesque for voice and numerals, Geist for everything read.",
+      "Strong out-curves for motion; scenes \"come into focus\" (blur plus scale) rather than slide."
+    ],
+    "rules": [
+      {
+        "name": "The Plate Holds Rule",
+        "body": "A plate band is always dark and always uses the plate tokens, in both themes. Only paper responds to the theme toggle.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light vs Ink Rule",
+        "body": "Status on a dark ground is emitted light (light-ok/warn/bad); status on light paper is printed ink (ink-ok/warn/bad). Never put the light values on pale paper.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Accent Rule",
+        "body": "Each ground has exactly one action accent: Vantage Blue on light paper, Starlight on any dark ground. They never appear as competing buttons on the same ground.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sentence-Case Rule",
+        "body": "Labels, captions and badges are sentence case at normal tracking. There are no spaced-caps captions, eyebrows or kickers above headlines; a headline stands on its own.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Data Rule",
+        "body": "Any number that can change (progress, dates, KPIs, prices, counters) uses tabular numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Engraving Rule",
+        "body": "Separation is a 1px hairline or a ground change, never a shadow. Shadows only mean \"this floats above the plate.\"",
+        "section": "elevation"
+      },
+      {
+        "name": "The Graticule Rule",
+        "body": "The atlas grid (80px graticule plus concentric rings) lives only on plate bands, at 0.05 to 0.07 alpha, radially masked so it fades out before the edges.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** alternate plate and paper bands; open and close a page on plate.",
+      "**Do** show status as light on dark grounds and as ink on light paper, always with a dot or bar, never color alone without a label.",
+      "**Do** use Starlight as the only action accent on dark grounds and Vantage Blue on light paper.",
+      "**Do** separate with 1px hairlines and ground changes; reserve shadows for things floating over the plate.",
+      "**Do** keep controls pill-shaped and at least 44px tall.",
+      "**Do** use the strong out-curve (cubic-bezier(0.23, 1, 0.32, 1)) for UI response, the arrive curve (cubic-bezier(0.16, 1, 0.3, 1)) for entrances and drawn lines, and the in-out curve only for 3D turns; never ease-in on UI.",
+      "**Do** gate hover effects to fine pointers and provide a reduced-motion path for every animation."
+    ],
+    "donts": [
+      "**Don't** put the light status values (mint, amber, coral) on pale paper; use the ink values.",
+      "**Don't** let a plate band follow the theme toggle; only paper changes.",
+      "**Don't** add spaced-caps captions, eyebrows or kickers above headlines.",
+      "**Don't** extend the graticule onto paper bands or raise its alpha above about 0.07.",
+      "**Don't** introduce a second icon family or filled icons."
+    ]
+  }
+}

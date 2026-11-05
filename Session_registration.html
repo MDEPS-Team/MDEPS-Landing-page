@@ -1,109 +1,132 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-
-    <title>Vantage PMO – Registro</title>
-
-    <link rel="stylesheet" href="public/styles/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title data-i18n="register.title">Vantage PMO – Create your account</title>
+  <meta name="theme-color" content="#031A30" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('vantage-pmo-theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="public/styles/style.css" />
 </head>
+<body class="auth">
 
-<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></g></symbol>
+    </defs>
+  </svg>
 
-    <!-- Reutiliza ABOUT porque ya tiene layout centrado -->
-    <section class="about">
+  <main class="auth__grid">
+    <section class="auth__sky plate" aria-hidden="true">
+      <div class="graticule"></div>
+      <a href="index.html" class="auth__logo" tabindex="-1"><img src="public/assets/images/logo/logo-on-dark.webp" alt="" width="545" height="112" /></a>
+      <canvas class="auth__orrery" id="authOrrery"></canvas>
+    </section>
 
-        <div class="container">
+    <section class="auth__panel paper">
+      <div class="auth__top">
+        <a href="index.html" class="link auth__back"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg><span data-i18n="register.back">Back to home</span></a>
+        <button class="lang-text" id="langSwitcher" type="button" aria-label="Cambiar a español"><span id="langText">ES</span></button>
+      </div>
 
-            <div class="about__inner">
+      <div class="auth__body">
+        <img class="auth__mark" src="public/assets/images/logo/logo-on-light.webp" alt="Vantage PMO" width="549" height="112" />
+        <h1 class="h2" data-i18n="register.heading">Create your account</h1>
+        <p class="lead" data-i18n="register.lead">Start organizing your portfolio in minutes. No credit card required to try it.</p>
+        <p class="auth__plan" id="planNote" hidden><span data-i18n="register.planLabel">Selected plan:</span> <strong id="planName"></strong></p>
 
-                <!-- Card reutilizando pillar-card -->
-                <div class="pillar-card fade-in is-visible">
+        <form class="form" id="registerForm" action="/api/register" method="POST" novalidate>
+          <input type="hidden" name="plan" id="planInput" />
+          <div class="field">
+            <label for="name" data-i18n="register.name">Full name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-err" />
+            <p class="field__err" id="name-err" hidden><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span data-i18n="register.errName">Enter your full name.</span></p>
+          </div>
+          <div class="field">
+            <label for="email" data-i18n="register.email">Work email</label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-err" />
+            <p class="field__err" id="email-err" hidden><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span data-i18n="register.errEmail">Enter a valid email, like name@company.com.</span></p>
+          </div>
+          <div class="field">
+            <label for="password" data-i18n="register.password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="password-hint password-err" />
+            <p class="field__hint" id="password-hint" data-i18n="register.passwordHint">At least 8 characters.</p>
+            <p class="field__err" id="password-err" hidden><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg><span data-i18n="register.errPassword">Use at least 8 characters.</span></p>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg form__submit"><span data-i18n="register.submit">Create account</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </form>
 
-                    <div class="pillar-card__body">
+        <p class="auth__alt"><span data-i18n="register.haveAccount">Already have an account?</span> <a class="link" href="https://vantagepmo-297ec.web.app" data-i18n="register.login">Log in</a></p>
+      </div>
+    </section>
+  </main>
 
-                        <span class="pillar-card__label">
-                            Paso 01
-                        </span>
+  <script src="public/js/i18n.js"></script>
+  <script src="public/js/orrery.js"></script>
+  <script>
+    (function () {
+      var t = function (k) { return window.i18n.t(k); };
 
-                        <h2 class="pillar-card__title">
-                            Crea tu cuenta
-                        </h2>
+      // Orrery decorativo del lado de la lámina
+      var c = document.getElementById('authOrrery');
+      if (c && window.Orrery) {
+        new window.Orrery(c, { mode: 'story', projects: [
+          { id: 'a', name: 'Alpha', progress: 0.78, health: 'ok' },
+          { id: 'b', name: 'Beta', progress: 0.42, health: 'bad' },
+          { id: 'c', name: 'Q3', progress: 0.91, health: 'ok' },
+          { id: 'd', name: 'CRM', progress: 0.55, health: 'warn' }
+        ] }).setStep(0);
+      }
 
-                        <p class="pillar-card__text">
-                            Únete a nuestra plataforma de gestión de proyectos.
-                        </p>
+      // Plan elegido desde la tabla de precios
+      var plan = new URLSearchParams(location.search).get('plan');
+      var names = { basic: 'pricing.basic.name', business: 'pricing.business.name', enterprise: 'pricing.enterprise.name' };
+      function showPlan() {
+        if (!names[plan]) return;
+        document.getElementById('planNote').hidden = false;
+        document.getElementById('planName').textContent = t(names[plan]);
+        document.getElementById('planInput').value = plan;
+      }
+      document.addEventListener('i18n:change', showPlan);
 
-                        <!-- Reutiliza ai-section__prompts para spacing -->
-                        <form action="/api/register" method="POST" class="ai-section__prompts">
-
-                            <!-- Reutiliza ai-section__input -->
-                            <div class="ai-section__input">
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    placeholder="Nombre completo"
-                                    required
-                                >
-                            </div>
-
-                            <div class="ai-section__input">
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="Correo electrónico"
-                                    required
-                                >
-                            </div>
-
-                            <div class="ai-section__input">
-                                <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    placeholder="Contraseña"
-                                    required
-                                >
-                            </div>
-
-                            <!-- Reutiliza tu botón existente -->
-                            <button type="submit" class="btn btn--green">
-                                Registrarme
-                            </button>
-
-                        </form>
-
-                        <a href="index.html" class="link-arrow">
-                            Volver al inicio
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <!-- Reutiliza media section -->
-                <div class="about__media">
-
-                    <div class="about__image"></div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section> 
-    <!-- Scripts (orden: i18n → app) -->
-    <script src="public/js/i18n.js"></script>
-    <script src="public/js/main.js"></script>
+      // Validación accesible: error junto al campo, foco en el primero inválido
+      var form = document.getElementById('registerForm');
+      var rules = {
+        name: function (v) { return v.trim().length >= 2; },
+        email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
+        password: function (v) { return v.length >= 8; }
+      };
+      function check(input) {
+        var ok = rules[input.name](input.value);
+        input.setAttribute('aria-invalid', String(!ok));
+        document.getElementById(input.name + '-err').hidden = ok;
+        return ok;
+      }
+      Object.keys(rules).forEach(function (n) {
+        var el = form.elements[n];
+        el.addEventListener('blur', function () { if (el.value) check(el); });
+        el.addEventListener('input', function () { if (el.getAttribute('aria-invalid') === 'true') check(el); });
+      });
+      form.addEventListener('submit', function (e) {
+        var first = null;
+        Object.keys(rules).forEach(function (n) { if (!check(form.elements[n]) && !first) first = form.elements[n]; });
+        if (first) { e.preventDefault(); first.focus(); }
+      });
+    })();
+  </script>
 </body>
 </html>

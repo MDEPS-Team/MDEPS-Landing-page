@@ -1,0 +1,430 @@
+- generic [active] [ref=e1]:
+  - link "Saltar al contenido" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Vantage PMO" [ref=e5] [cursor=pointer]:
+        - /url: "#hero"
+      - navigation "Main navigation" [ref=e6]:
+        - link "Plataforma" [ref=e7] [cursor=pointer]:
+          - /url: "#platform"
+        - link "Asistente IA" [ref=e8] [cursor=pointer]:
+          - /url: "#assistant"
+        - link "Precios" [ref=e9] [cursor=pointer]:
+          - /url: "#pricing"
+        - link "Equipo" [ref=e10] [cursor=pointer]:
+          - /url: "#team"
+      - generic [ref=e11]:
+        - button "Switch to English" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]: EN
+        - button "Cambiar a tema oscuro" [pressed] [ref=e14] [cursor=pointer]
+        - link "Iniciar sesión" [ref=e17] [cursor=pointer]:
+          - /url: https://vantagepmo-297ec.web.app
+        - link "Empieza ahora" [ref=e18] [cursor=pointer]:
+          - /url: Session_registration.html
+  - main [ref=e19]:
+    - region [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - heading "Centraliza tus proyectos, controla tu futuro." [level=1] [ref=e23]
+          - paragraph [ref=e24]: Vantage PMO aporta claridad a cada proyecto. Visibilidad en tiempo real, procesos estandarizados y la inteligencia que necesitas para liderar.
+          - generic [ref=e25]:
+            - link "Empieza ahora" [ref=e26] [cursor=pointer]:
+              - /url: Session_registration.html
+            - link "Ver la plataforma" [ref=e30] [cursor=pointer]:
+              - /url: "#platform"
+        - 'figure "Elige un proyecto para inspeccionarlo: Alpha Launch Beta Rollout Q3 Migration CRM Update Leyenda de estados Portafolio de ejemplo. Cada órbita es un proyecto: el arco brillante es su avance y la luz, su salud." [ref=e31]':
+          - group "Portafolio de ejemplo en 3D. Arrástralo o usa las flechas del teclado para girarlo." [ref=e32]:
+            - generic [ref=e34]:
+              - paragraph [ref=e35]: Portafolio · 4 proyectos
+              - paragraph [ref=e36]: 2 a tiempo · 1 en riesgo · 1 retrasado
+          - generic [ref=e39]:
+            - generic [ref=e40]: "Elige un proyecto para inspeccionarlo:"
+            - list [ref=e41]:
+              - listitem [ref=e42]:
+                - button "Alpha Launch" [ref=e43] [cursor=pointer]
+              - listitem [ref=e46]:
+                - button "Beta Rollout" [ref=e47] [cursor=pointer]
+              - listitem [ref=e50]:
+                - button "Q3 Migration" [ref=e51] [cursor=pointer]
+              - listitem [ref=e54]:
+                - button "CRM Update" [ref=e55] [cursor=pointer]
+            - list "Leyenda de estados" [ref=e58]:
+              - listitem [ref=e59]: A tiempo
+              - listitem [ref=e60]: En riesgo
+              - listitem [ref=e61]: Retrasado
+            - paragraph [ref=e62]: "Portafolio de ejemplo. Cada órbita es un proyecto: el arco brillante es su avance y la luz, su salud."
+    - region [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - heading "Tres pilares de la gestión" [level=2] [ref=e66]
+          - paragraph [ref=e67]: Todo lo que necesitas para gestionar bien tus proyectos
+        - list [ref=e68]:
+          - listitem [ref=e69]:
+            - generic [ref=e70]:
+              - heading "Control" [level=3] [ref=e71]
+              - paragraph [ref=e72]: Un solo lugar para todo
+              - paragraph [ref=e73]: Deja de perseguir datos de proyectos entre sistemas.
+              - link "Explorar la plataforma" [ref=e74] [cursor=pointer]:
+                - /url: "#platform"
+          - listitem [ref=e78]:
+            - generic [ref=e79]:
+              - heading "Visibilidad" [level=3] [ref=e80]
+              - paragraph [ref=e81]: Mira lo que importa ahora
+              - paragraph [ref=e82]: Conoce tu estado en tiempo real.
+              - link "Ver el portafolio" [ref=e83] [cursor=pointer]:
+                - /url: "#hero"
+          - listitem [ref=e87]:
+            - generic [ref=e88]:
+              - heading "Claridad" [level=3] [ref=e89]
+              - paragraph [ref=e90]: Toma decisiones que impulsan tus proyectos
+              - paragraph [ref=e91]: Cambia las suposiciones diarias por respuestas en las que puedes confiar.
+              - link "Conocer el asistente" [ref=e92] [cursor=pointer]:
+                - /url: "#assistant"
+    - region [ref=e96]:
+      - generic [ref=e97]:
+        - heading "Una plataforma, todas las necesidades" [level=2] [ref=e98]
+        - paragraph [ref=e99]: Cada módulo resuelve un reto específico y, juntos, impulsan una operación de proyectos sin fricciones.
+      - generic [ref=e100]:
+        - list "Platform modules" [ref=e101]:
+          - listitem [ref=e102]:
+            - generic [ref=e103]:
+              - article [ref=e104]:
+                - heading "Planificación, ejecución y entrega con IA" [level=3] [ref=e105]
+                - paragraph [ref=e106]: Proyectos
+              - article [aria-hidden] [ref=e107]:
+                - paragraph [ref=e108]: Impulsa proyectos y procesos a escala, con inteligencia que ejecuta, construye y automatiza por ti.
+                - link [ref=e109] [cursor=pointer]:
+                  - /url: Session_registration.html
+                  - text: Empezar
+            - button "Cómo funciona" [ref=e110] [cursor=pointer]
+          - listitem [ref=e114]:
+            - generic [ref=e115]:
+              - article [ref=e116]:
+                - heading "Visibilidad del portafolio que te da el control" [level=3] [ref=e117]
+                - paragraph [ref=e118]: Portafolio
+              - article [aria-hidden] [ref=e119]:
+                - paragraph [ref=e120]: Ve todos tus proyectos a la vez. Sigue salud, riesgo y avance desde un solo centro de mando.
+                - link [ref=e121] [cursor=pointer]:
+                  - /url: Session_registration.html
+                  - text: Empezar
+            - button "Cómo funciona" [ref=e122] [cursor=pointer]
+          - listitem [ref=e126]:
+            - generic [ref=e127]:
+              - article [ref=e128]:
+                - heading "Decisiones basadas en datos que dan resultados" [level=3] [ref=e129]
+                - paragraph [ref=e130]: Analítica
+              - article [aria-hidden] [ref=e131]:
+                - paragraph [ref=e132]: Convierte datos de proyectos en inteligencia para liderar. Pronostica mejor, actúa más rápido.
+                - link [ref=e133] [cursor=pointer]:
+                  - /url: Session_registration.html
+                  - text: Empezar
+            - button "Cómo funciona" [ref=e134] [cursor=pointer]
+          - listitem [ref=e138]:
+            - generic [ref=e139]:
+              - article [ref=e140]:
+                - heading "Automatiza el trabajo que nadie quiere hacer" [level=3] [ref=e141]
+                - paragraph [ref=e142]: Automatización
+              - article [aria-hidden] [ref=e143]:
+                - paragraph [ref=e144]: "De recordatorios a reportes: deja que la automatización se encargue de lo repetitivo para que tu equipo se enfoque en lo importante."
+                - link [ref=e145] [cursor=pointer]:
+                  - /url: Session_registration.html
+                  - text: Empezar
+            - button "Cómo funciona" [ref=e146] [cursor=pointer]
+          - listitem [ref=e150]:
+            - generic [ref=e151]:
+              - article [ref=e152]:
+                - heading "Las personas correctas en los proyectos correctos" [level=3] [ref=e153]
+                - paragraph [ref=e154]: Recursos
+              - article [aria-hidden] [ref=e155]:
+                - paragraph [ref=e156]: Controla la capacidad, asigna recursos con inteligencia y evita el agotamiento antes de que empiece.
+                - link [ref=e157] [cursor=pointer]:
+                  - /url: Session_registration.html
+                  - text: Empezar
+            - button "Cómo funciona" [ref=e158] [cursor=pointer]
+          - listitem [ref=e162]:
+            - generic [ref=e163]:
+              - article [ref=e164]:
+                - heading "Reportes que sí se leen" [level=3] [ref=e165]
+                - paragraph [ref=e166]: Reportes
+              - article [aria-hidden] [ref=e167]:
+                - paragraph [ref=e168]: Reportes automáticos para stakeholders con las métricas que importan, entregados cuando los necesitas.
+                - link [ref=e169] [cursor=pointer]:
+                  - /url: Session_registration.html
+                  - text: Empezar
+            - button "Cómo funciona" [ref=e170] [cursor=pointer]
+          - listitem [ref=e174]:
+            - generic [ref=e175]:
+              - article [ref=e176]:
+                - heading "Conecta las herramientas que tu equipo ya usa" [level=3] [ref=e177]
+                - paragraph [ref=e178]: Integraciones
+              - article [aria-hidden] [ref=e179]:
+                - paragraph [ref=e180]: Integraciones nativas con Jira, Slack, Teams y más de 40 herramientas. Una sola fuente de verdad, cero fricción.
+                - link [ref=e181] [cursor=pointer]:
+                  - /url: Session_registration.html
+                  - text: Empezar
+            - button "Cómo funciona" [ref=e182] [cursor=pointer]
+        - generic [ref=e186]:
+          - button "Módulo anterior" [ref=e187] [cursor=pointer]
+          - paragraph [ref=e190]: 1 de 7
+          - button "Módulo siguiente" [ref=e191] [cursor=pointer]
+    - region [ref=e194]:
+      - heading "Qué cambia con Vantage PMO" [level=2] [ref=e195]
+      - generic [ref=e200]:
+        - article [ref=e201]:
+          - heading "Qué cambia cuando tomas el control" [level=3] [ref=e202]
+          - paragraph [ref=e203]: Los proyectos avanzan más rápido. Los equipos entienden qué importa. Los líderes deciden mejor.
+        - article [ref=e204]:
+          - heading "Proyectos a tiempo, equipos alineados" [level=3] [ref=e205]
+          - paragraph [ref=e206]: Los retrasos desaparecen cuando todos ven el mismo panorama. Vantage PMO elimina el ruido para que tus equipos avancen juntos, no en círculos.
+        - article [ref=e207]:
+          - heading "Comunicación que realmente funciona" [level=3] [ref=e208]
+          - paragraph [ref=e209]: Se acabó esperar actualizaciones o buscar información. Tus equipos saben qué se espera y los líderes saben qué pasa, ahora mismo.
+        - article [ref=e210]:
+          - heading "Decisiones basadas en hechos, no en intuiciones" [level=3] [ref=e211]
+          - paragraph [ref=e212]: Los datos reales reemplazan las suposiciones. Tu equipo directivo decide mejor, respaldado por los números y no solo por la experiencia.
+    - region [ref=e213]:
+      - generic [ref=e214]:
+        - generic [ref=e215]:
+          - heading "Tu asistente inteligente de proyectos" [level=2] [ref=e216]
+          - paragraph [ref=e217]: Pregunta lo que quieras. Obtén respuestas basadas en los datos reales de tus proyectos.
+          - tablist "Preguntas de ejemplo" [ref=e218]:
+            - tab "Crear un plan de proyecto" [selected] [ref=e219] [cursor=pointer]
+            - tab "Resumir el estado de los proyectos" [ref=e220] [cursor=pointer]
+            - tab "Identificar tareas en riesgo" [ref=e221] [cursor=pointer]
+            - tab "Generar un reporte para stakeholders" [ref=e222] [cursor=pointer]
+            - tab "Pronosticar la fecha de entrega" [ref=e223] [cursor=pointer]
+          - button "Pausar el recorrido" [pressed] [ref=e224] [cursor=pointer]
+        - generic [ref=e228]:
+          - generic [ref=e233]: Vantage AI
+          - tabpanel "Crear un plan de proyecto" [ref=e234]:
+            - generic [ref=e235]: Nuevo plan de proyecto
+            - generic [ref=e239]:
+              - generic [ref=e240]:
+                - generic [ref=e241]: Objetivo
+                - generic [ref=e242]: Lanzar el portal de clientes en el Q3
+              - generic [ref=e243]:
+                - generic [ref=e244]: Hitos
+                - list [ref=e245]:
+                  - listitem [ref=e246]:
+                    - generic [ref=e247]: Semana 1
+                    - generic [ref=e248]: Alcance y arranque
+                  - listitem [ref=e249]:
+                    - generic [ref=e250]: Semana 3
+                    - generic [ref=e251]: Diseño aprobado
+                  - listitem [ref=e252]:
+                    - generic [ref=e253]: Semana 6
+                    - generic [ref=e254]: Lanzamiento a clientes
+              - generic [ref=e255]:
+                - generic [ref=e256]: Equipo
+                - emphasis [ref=e261]: "+3"
+            - paragraph [ref=e262]: Preparé un plan de 6 semanas con 3 hitos, asignado a 6 personas del equipo. Revísalo y ajústalo antes de publicarlo.
+          - generic [ref=e263]:
+            - generic [ref=e264]: Pregúntale a Vantage AI
+            - textbox "Pregúntale a Vantage AI" [ref=e265]:
+              - /placeholder: Pregúntale a Vantage AI…
+            - button "Enviar" [ref=e266] [cursor=pointer]
+    - region [ref=e269]:
+      - generic [ref=e270]:
+        - img "El equipo de Vantage PMO trabajando juntos" [ref=e271]
+        - generic [ref=e272]:
+          - heading "Creado por ingenieros que entienden los proyectos" [level=2] [ref=e273]
+          - paragraph [ref=e274]: "Vantage PMO nació de ingenieros de software que veían el mismo problema en todas partes: los proyectos no fallaban por falta de talento, sino por falta de claridad. Creamos Vantage PMO para resolverlo."
+          - link "Conoce al equipo" [ref=e275] [cursor=pointer]:
+            - /url: "#team"
+    - region [ref=e279]:
+      - generic [ref=e280]:
+        - generic [ref=e281]:
+          - heading "Empezar toma minutos, no meses" [level=2] [ref=e282]
+          - paragraph [ref=e283]: Configura tu espacio de trabajo y trae tus proyectos. Vantage PMO se encarga del resto.
+        - list [ref=e284]:
+          - listitem [ref=e285]:
+            - heading "Conecta tus proyectos a la plataforma" [level=3] [ref=e289]
+            - paragraph [ref=e290]: Importa lo que tengas o empieza de cero. Incorpora a tus equipos con plantillas estandarizadas.
+          - listitem [ref=e291]:
+            - heading "Mira cómo tu portafolio toma forma" [level=3] [ref=e295]
+            - paragraph [ref=e296]: "Ve el estado donde lo necesites: proyectos, tareas y planes."
+          - listitem [ref=e297]:
+            - heading "Lidera con confianza y datos" [level=3] [ref=e301]
+            - paragraph [ref=e302]: Toma decisiones respaldadas por inteligencia, no por costumbre.
+        - link "Crea tu espacio de trabajo" [ref=e304] [cursor=pointer]:
+          - /url: Session_registration.html
+    - region [ref=e308]:
+      - generic [ref=e309]:
+        - generic [ref=e310]:
+          - heading "Voces reales" [level=2] [ref=e311]
+          - paragraph [ref=e312]: Lo que dicen los líderes de proyecto sobre Vantage PMO
+        - generic [ref=e313]:
+          - figure "Maria Rodriguez Líder de equipo" [ref=e314]:
+            - blockquote [ref=e315]: “Dejamos de perder plazos desde el momento en que cambiamos. Ahora duermo mejor.”
+            - generic [ref=e317]:
+              - strong [ref=e318]: Maria Rodriguez
+              - generic [ref=e319]: Líder de equipo
+          - figure "James Carter Director de PMO" [ref=e320]:
+            - blockquote [ref=e321]: “La visibilidad de todos nuestros proyectos pasó del caos a la claridad total en una semana.”
+            - generic [ref=e323]:
+              - strong [ref=e324]: James Carter
+              - generic [ref=e325]: Director de PMO
+    - region [ref=e326]:
+      - generic [ref=e327]:
+        - generic [ref=e328]:
+          - heading "Elige tu plan" [level=2] [ref=e329]
+          - paragraph [ref=e330]: Sin contratos a largo plazo. Cambia de plan o cancela cuando quieras.
+        - generic [ref=e331]:
+          - article [ref=e332]:
+            - heading "Básico" [level=3] [ref=e333]
+            - paragraph [ref=e334]:
+              - generic [ref=e335]: $
+              - generic [ref=e336]: "19"
+              - generic [ref=e337]: al mes
+            - paragraph [ref=e338]: Para equipos pequeños que quieren estandarizar cómo gestionan sus proyectos.
+            - link "Empezar" [ref=e339] [cursor=pointer]:
+              - /url: Session_registration.html?plan=basic
+            - list [ref=e340]:
+              - listitem [ref=e341]:
+                - generic [ref=e344]: Hasta 10 proyectos activos
+              - listitem [ref=e345]:
+                - generic [ref=e348]: Paneles de proyecto en tiempo real
+              - listitem [ref=e349]:
+                - generic [ref=e352]: Plantillas de proyecto estandarizadas
+              - listitem [ref=e353]:
+                - generic [ref=e356]: Reportes de estado
+              - listitem [ref=e357]:
+                - generic [ref=e360]: Soporte por correo
+              - listitem [ref=e361]:
+                - generic [ref=e363]:
+                  - generic [ref=e364]: "No incluido:"
+                  - text: Asistente IA
+              - listitem [ref=e365]:
+                - generic [ref=e367]:
+                  - generic [ref=e368]: "No incluido:"
+                  - text: Integraciones
+          - article [ref=e369]:
+            - paragraph [ref=e370]: Pensado para PMO con varios equipos
+            - heading "Business" [level=3] [ref=e371]
+            - paragraph [ref=e372]:
+              - generic [ref=e373]: $
+              - generic [ref=e374]: "29"
+              - generic [ref=e375]: al mes
+            - paragraph [ref=e376]: Para PMO que gestionan un portafolio de proyectos con varios equipos.
+            - link "Empezar" [ref=e377] [cursor=pointer]:
+              - /url: Session_registration.html?plan=business
+            - list [ref=e378]:
+              - listitem [ref=e379]:
+                - generic [ref=e382]: Todo lo del plan Básico
+              - listitem [ref=e383]:
+                - generic [ref=e386]: Proyectos ilimitados
+              - listitem [ref=e387]:
+                - generic [ref=e390]: Vista de salud y riesgo del portafolio
+              - listitem [ref=e391]:
+                - generic [ref=e394]: Asistente IA de proyectos
+              - listitem [ref=e395]:
+                - generic [ref=e398]: Reportes automáticos para stakeholders
+              - listitem [ref=e399]:
+                - generic [ref=e402]: Integraciones con Jira, Slack y Teams
+          - article [ref=e403]:
+            - heading "Enterprise" [level=3] [ref=e404]
+            - paragraph [ref=e405]:
+              - generic [ref=e406]: $
+              - generic [ref=e407]: "39"
+              - generic [ref=e408]: al mes
+            - paragraph [ref=e409]: Para organizaciones con varias PMO y portafolios grandes.
+            - link "Hablar con ventas" [ref=e410] [cursor=pointer]:
+              - /url: Session_registration.html?plan=enterprise
+            - list [ref=e411]:
+              - listitem [ref=e412]:
+                - generic [ref=e415]: Todo lo del plan Business
+              - listitem [ref=e416]:
+                - generic [ref=e419]: Planificación de capacidad de recursos
+              - listitem [ref=e420]:
+                - generic [ref=e423]: Pronóstico de entregas
+              - listitem [ref=e424]:
+                - generic [ref=e427]: Inicio de sesión único y roles
+              - listitem [ref=e428]:
+                - generic [ref=e431]: SLA garantizado
+              - listitem [ref=e432]:
+                - generic [ref=e435]: Gestor de cuenta dedicado
+    - region [ref=e436]:
+      - generic [ref=e437]:
+        - generic [ref=e438]:
+          - generic [ref=e439]:
+            - heading "Adelántate a lo que viene" [level=2] [ref=e440]
+            - paragraph [ref=e441]: Recibe ideas sobre gestión de proyectos, liderazgo y cómo construir mejores equipos.
+          - link "Suscribirme" [ref=e442] [cursor=pointer]:
+            - /url: Session_registration.html?intent=newsletter
+        - generic [ref=e443]:
+          - article [ref=e444]:
+            - heading "Por qué tu marco de PMO te está frenando" [level=3] [ref=e445]
+            - paragraph [ref=e446]: Liderazgo
+            - paragraph [ref=e447]: La mayoría de las oficinas de proyectos se crearon para cumplir normas, no para ir rápido.
+          - article [ref=e448]:
+            - heading "El costo real de los equipos desalineados" [level=3] [ref=e449]
+            - paragraph [ref=e450]: Equipos
+            - paragraph [ref=e451]: "La desalineación no solo frustra: se nota en tus plazos."
+          - article [ref=e452]:
+            - heading "Decisiones basadas en datos en la gestión de proyectos" [level=3] [ref=e453]
+            - paragraph [ref=e454]: Datos
+            - paragraph [ref=e455]: Pasar de la intuición a decisiones respaldadas por datos lo cambia todo.
+    - region [ref=e456]:
+      - generic [ref=e457]:
+        - generic [ref=e458]:
+          - heading "Conoce al equipo" [level=2] [ref=e459]
+          - paragraph [ref=e460]: Ingenieros de software que construyen Vantage PMO.
+        - list [ref=e461]:
+          - listitem [ref=e462]:
+            - heading "Kirk Douglas" [level=3] [ref=e463]
+            - paragraph [ref=e464]: CTO
+            - paragraph [ref=e465]: Desarrollador backend apasionado por construir sistemas escalables y eficientes.
+          - listitem [ref=e466]:
+            - heading "Angiela Stephany" [level=3] [ref=e467]
+            - paragraph [ref=e468]: Jefa de Producto
+            - paragraph [ref=e469]: Diseñadora apasionada por crear experiencias intuitivas y atractivas.
+          - listitem [ref=e470]:
+            - heading "Lionel Snayder" [level=3] [ref=e471]
+            - paragraph [ref=e472]: Engineering Manager
+            - paragraph [ref=e473]: Desarrollador frontend con experiencia en diagramas de arquitectura.
+          - listitem [ref=e474]:
+            - heading "Mike Guillen" [level=3] [ref=e475]
+            - paragraph [ref=e476]: Engineering Manager
+            - paragraph [ref=e477]: Desarrollador full-stack que resuelve problemas y diseña interfaces intuitivas.
+          - listitem [ref=e478]:
+            - heading "Rafael Agustin" [level=3] [ref=e479]
+            - paragraph [ref=e480]: Engineering Manager
+            - paragraph [ref=e481]: Desarrollador backend experto en sistemas robustos y escalables.
+    - region [ref=e482]:
+      - generic [ref=e483]:
+        - heading "Ve todo tu portafolio desde un solo punto de vista." [level=2] [ref=e484]
+        - paragraph [ref=e485]: Crea tu espacio de trabajo, trae tus proyectos y sabe hoy mismo en qué punto está cada uno.
+        - generic [ref=e486]:
+          - link "Empieza ahora" [ref=e487] [cursor=pointer]:
+            - /url: Session_registration.html
+          - link "Ya tengo una cuenta" [ref=e491] [cursor=pointer]:
+            - /url: https://vantagepmo-297ec.web.app
+  - contentinfo [ref=e492]:
+    - generic [ref=e493]:
+      - generic [ref=e494]:
+        - img "Vantage PMO" [ref=e495]
+        - paragraph [ref=e496]: Claridad para cada proyecto, desde un solo punto de vista.
+      - navigation [ref=e497]:
+        - heading "Producto" [level=2] [ref=e498]
+        - link "Plataforma" [ref=e499] [cursor=pointer]:
+          - /url: "#platform"
+        - link "Asistente IA" [ref=e500] [cursor=pointer]:
+          - /url: "#assistant"
+        - link "Precios" [ref=e501] [cursor=pointer]:
+          - /url: "#pricing"
+        - link "Artículos" [ref=e502] [cursor=pointer]:
+          - /url: "#blog"
+      - navigation [ref=e503]:
+        - heading "Empresa" [level=2] [ref=e504]
+        - link "Nuestra historia" [ref=e505] [cursor=pointer]:
+          - /url: "#about"
+        - link "Equipo" [ref=e506] [cursor=pointer]:
+          - /url: "#team"
+      - navigation [ref=e507]:
+        - heading "Cuenta" [level=2] [ref=e508]
+        - link "Iniciar sesión" [ref=e509] [cursor=pointer]:
+          - /url: https://vantagepmo-297ec.web.app
+        - link "Crear una cuenta" [ref=e510] [cursor=pointer]:
+          - /url: Session_registration.html
+    - paragraph [ref=e512]: © 2026 Vantage PMO. Todos los derechos reservados.

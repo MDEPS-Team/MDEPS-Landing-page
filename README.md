@@ -1,112 +1,70 @@
-# Vantage PMO – Sitio Web
+# Vantage PMO – Sitio web
 
-Landing page estática de **Vantage PMO**, una plataforma de gestión de proyectos (PMO) que centraliza datos, proporciona visibilidad en tiempo real y permite decisiones basadas en datos.
+Landing page estática de **Vantage PMO**, una plataforma de gestión de proyectos (PMO) que centraliza el portafolio, da visibilidad en tiempo real y apoya las decisiones con un asistente de IA.
 
-Desplegado en **GitHub Pages** · Soporte **EN / ES** · Sin dependencias externas
-
----
-
-## Características
-
-- **Internacionalización (i18n)** — Inglés y Español con detección automática y persistencia en `localStorage`
-- **Carrusel de productos** — Bucle infinito con scroll-snap, navegación por botones y dots
-- **Reproductor de video inline** — Miniatura de YouTube con autoplay al hacer clic (sección "About the Team")
-- **Secciones animadas** — Intersection Observer para fade-in en scroll
-- **Diseño responsivo** — CSS Grid + Flexbox, adaptado a móvil, tablet y escritorio
-- **Navegación móvil** — Menú hamburguesa con soporte ARIA
-- **Imágenes externas** — Unsplash CDN para productos (sin archivos locales requeridos)
+Desplegada en **GitHub Pages** · **EN / ES** · Tema **claro / oscuro** · Sin build ni dependencias de ejecución
 
 ---
 
-## Estructura del Proyecto
+## Cómo correrla
+
+No hay paso de build. Abre `index.html` directamente o sírvela en local:
+
+```bash
+npx serve .            # o cualquier servidor estático
+```
+
+## Estructura
 
 ```
 /
-├── index.html                    # Documento principal (SPA)
-├── README.md
+├── index.html                  # Landing
+├── Session_registration.html   # Registro (destino del CTA principal)
+├── PRODUCT.md / DESIGN.md      # Contexto de producto y sistema visual
 └── public/
-    ├── assets/
-    │   └── images/
-    │       ├── about/            # about.png
-    │       ├── blog/             # data.jpeg · leadership.png · teams.jpeg
-    │       ├── cta/              # lead.jpeg
-    │       ├── hero/             # hero.png
-    │       ├── logo/             # light-logo.png · dark-logo.png
-    │       ├── pillars/          # pillar-01.png · pillar-02.png · pillar-03.png
-    │       ├── team/             # Lionel , Rafael , Angiela , Kirk , Dylan 
-    │       └── testimonials/     # testimonial-1.png · testimonial-2.jpeg
-    ├── i18n/
-    │   ├── en.json               # Traducciones en inglés
-    │   └── es.json               # Traducciones en español
+    ├── assets/images/          # WebP optimizados (+ originales PNG/JPEG)
     ├── js/
-    │   ├── i18n.js               # Módulo i18n (fetch + DOM update)
-    │   ├── main.js               # Lógica principal (carrusel, animaciones, video, etc.)
-    │   └── nav.js                # Menú de navegación móvil
-    └── styles/
-        └── style.css             # Hoja de estilos unificada (tokens CSS + BEM)
+    │   ├── i18n.js             # Diccionarios EN/ES en línea + data-i18n / -aria / -placeholder / -alt
+    │   ├── orrery.js           # Vista 3D del portafolio en canvas (sin librerías)
+    │   └── main.js             # Nav, tema, orrery, carrusel 3D, asistente IA, recorrido
+    └── styles/style.css        # Tokens + componentes + secciones
 ```
 
----
+## Secciones
 
-## Secciones del sitio
+| Sección | ID | Qué hace |
+|---|---|---|
+| Hero | `#hero` | Propuesta de valor + orrery 3D interactivo (arrastrar, flechas, chips por proyecto) |
+| Pilares | `#pillars` | Control, Visibilidad, Claridad |
+| Plataforma | `#platform` | 7 módulos en carrusel 3D; cada tarjeta gira para mostrar cómo funciona |
+| Resultados | `#results` | El orrery se ordena con el scroll: control → alineación → comunicación → datos |
+| Asistente IA | `#assistant` | Recorrido de 5 preguntas (pausable) con tablero, reporte y pronóstico a escala |
+| Nosotros | `#about` | Historia |
+| Onboarding | `#onboarding` | 3 pasos con línea que se dibuja al entrar |
+| Testimonios | `#testimonials` | Citas |
+| Precios | `#pricing` | Básico / Business / Enterprise |
+| Artículos | `#blog` | 3 artículos |
+| Equipo | `#team` | 5 integrantes |
+| Cierre | `#cta` | CTA final |
 
-| Sección | ID | Descripción |
-|---------|----|-------------|
-| Nav | `#nav` | Barra de navegación con cambio de idioma |
-| Hero | `#hero` | Encabezado principal con imagen |
-| Pillars | `#pillars` | 3 pilares de gestión (Control, Visibilidad, Claridad) |
-| Products | `#products` | Carrusel de 7 módulos de la plataforma |
-| Features | `#features` | Características con scroll animado |
-| AI | `#ai` | Sección de inteligencia artificial |
-| About | `#about` | Historia del equipo |
-| Onboarding | `#onboarding` | Pasos para comenzar |
-| Testimonials | `#testimonials` | Testimonios de clientes |
-| CTA | `#cta` | "Meet the team" con reproductor YouTube inline |
-| Blog | `#blog` | 3 artículos con imágenes reales |
-| Team | `#team` | Tarjetas del equipo de desarrollo |
-| Footer | — | Links, redes sociales y copyright |
+## Accesibilidad y rendimiento
 
----
+- Enlace para saltar al contenido, foco visible, navegación completa por teclado (tabs del asistente con flechas, orrery con flechas y Escape).
+- Contraste AA en ambos temas; `prefers-reduced-motion` respetado (orrery estático, sin recorrido automático).
+- Animaciones pausadas fuera de pantalla; imágenes WebP con `width`/`height` y carga diferida.
 
-## Tecnologías
+## i18n
 
-| Tecnología | Uso |
-|------------|-----|
-| HTML5 semántico | Estructura y accesibilidad (ARIA) |
-| CSS3 (Grid, Flexbox, Custom Properties) | Layout, temas, animaciones |
-| JavaScript ES5+ (vanilla) | Interactividad sin frameworks |
-| Google Fonts (Sora, Inter) | Tipografía |
-| Unsplash CDN | Imágenes de productos |
-| YouTube Embed API | Reproductor inline en sección CTA |
-| Fetch API | Carga de traducciones JSON |
-| Intersection Observer API | Animaciones en scroll |
-| localStorage | Persistencia del idioma |
-
----
-
-## i18n — Internacionalización
-
-Las traducciones se cargan desde `public/i18n/{lang}.json` mediante `fetch()`. La URL se construye dinámicamente en base a la ubicación del script, lo que garantiza compatibilidad con GitHub Pages en cualquier subdirectorio.
-
-Para cambiar el idioma en código:
+Todas las cadenas viven en `public/js/i18n.js`. Para añadir un idioma, duplica el bloque `en`, tradúcelo y añádelo a `SUPPORTED`.
 
 ```js
-window.i18n.setLanguage('es'); // o 'en'
+window.i18n.setLanguage('es');
 ```
 
-Para agregar un nuevo idioma:
-1. Crear `public/i18n/fr.json` con las mismas claves
-2. Agregar `'fr'` al array `SUPPORTED_LANGS` en `i18n.js`
+## Pendiente de validar
 
----
-
-## Soporte de navegadores
-
-- Chrome 80+ · Firefox 75+ · Safari 13+ · Edge 80+
-- Requiere: CSS Grid, Fetch API, Intersection Observer, scroll-snap
-
----
-
-## Licencia
+- **Precios**: las características de cada plan son un borrador para un PMO SaaS.
+- **Testimonios**: nombres y citas de ejemplo; reemplazar por clientes reales.
+- **Registro**: el formulario envía a `/api/register`, que no existe en hosting estático.
 
 © 2026 Vantage PMO. Todos los derechos reservados.
