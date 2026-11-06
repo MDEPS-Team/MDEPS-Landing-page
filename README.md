@@ -20,7 +20,6 @@ npx serve .            # o cualquier servidor estático
 /
 ├── index.html                  # Landing
 ├── Session_registration.html   # Registro (destino del CTA principal)
-├── PRODUCT.md / DESIGN.md      # Contexto de producto y sistema visual
 └── public/
     ├── assets/images/          # WebP optimizados (+ originales PNG/JPEG)
     ├── js/
@@ -46,6 +45,31 @@ npx serve .            # o cualquier servidor estático
 | Artículos | `#blog` | 3 artículos |
 | Equipo | `#team` | 5 integrantes |
 | Cierre | `#cta` | CTA final |
+
+## Tecnologías
+
+- **HTML, CSS y JavaScript** sin frameworks ni paso de build.
+- **Canvas 2D** para el orrery 3D (proyección en perspectiva propia, sin librerías).
+- **Google Fonts**: Bricolage Grotesque (títulos), Geist (texto) y Geist Mono (datos).
+- **Imágenes de módulos** cargadas desde Unsplash; el resto son WebP locales.
+
+## Sistema visual
+
+| Token | Valor | Uso |
+|---|---|---|
+| Azul marca | `#005B9A` | Botones, enlaces, acentos |
+| Noche | `#031A30` | Fondo de las secciones "plate" (siempre oscuro) |
+| A tiempo | `#7FE0C9` | Proyectos en buen estado |
+| En riesgo | `#FFB547` | Proyectos con alertas |
+| Retrasado | `#FF7A66` | Proyectos atrasados |
+
+Los colores, tipografías, espaciados y curvas de animación están definidos como variables en `:root` al inicio de `public/styles/style.css`. El tema oscuro se aplica con `[data-theme="dark"]` y se guarda en `localStorage`.
+
+## Flujo de trabajo
+
+- `main` es la rama publicada en GitHub Pages; los cambios se hacen en ramas `feat/…` o `fix/…` y entran por Pull Request.
+- Mensajes de commit con prefijo: `feat:`, `fix:`, `chore:`, `docs:`.
+- Antes de abrir un PR, revisa la página en móvil (375 px), tablet (768 px) y escritorio (1440 px), con ambos temas e idiomas, y que la consola no muestre errores.
 
 ## Accesibilidad y rendimiento
 
