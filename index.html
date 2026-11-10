@@ -1,1218 +1,693 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title data-i18n="meta.title">Vantage PMO – Centralize your projects</title>
   <meta name="description" data-i18n="meta.description"
-        content="Vantage PMO brings clarity to every project." />
+        content="Vantage PMO brings clarity to every project. Real-time visibility, standardized processes, and the intelligence you need to lead." />
+  <meta name="theme-color" content="#031A30" />
 
-  <!-- Fuente -->
+  <!-- Tema antes del primer pintado: evita el destello claro/oscuro -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('vantage-pmo-theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="public/assets/images/logo/logo-on-dark.webp" />
   <link rel="stylesheet" href="public/styles/style.css" />
 </head>
 <body>
 
-  <!-- ============================================================
-       DOMINIO: nav
-       ============================================================ -->
+  <!-- Sistema de iconos (trazo 1.75, una sola familia) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+      <symbol id="i-turn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4"/><path d="M20 12a8 8 0 0 1-14 5.3"/><path d="M6 21v-4h4"/></g></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M7 9l5-5 5 5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></g></symbol>
+      <symbol id="i-orbit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="9.5" ry="4" transform="rotate(-20 12 12)"/></g></symbol>
+      <symbol id="i-bars" viewBox="0 0 24 24"><path d="M6 20v-6M12 20V4M18 20v-10" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main" data-i18n="nav.skip">Skip to content</a>
+
+  <!-- ============================================================ NAV -->
   <header class="nav" id="nav">
-    <div class="container">
-      <div class="nav__inner">
+    <div class="nav__bar wrap">
+      <a href="#hero" class="nav__logo" aria-label="Vantage PMO">
+        <img src="public/assets/images/logo/logo-on-dark.webp" alt="" width="545" height="112" />
+      </a>
 
-        <a href="#hero" class="nav__logo" aria-label="Vantage PMO">
-          <img src="public/assets/images/logo/light-logo.png" alt="Vantage PMO" class="nav__logo-img" />
-        </a>
+      <nav class="nav__links" aria-label="Main navigation">
+        <a href="#platform" data-i18n="nav.platform">Platform</a>
+        <a href="#assistant" data-i18n="nav.assistant">AI assistant</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#team" data-i18n="nav.team">Team</a>
+      </nav>
 
-        <nav class="nav__menu" aria-label="Main navigation">
-          <ul class="nav__list">
-            <li><a href="#hero" class="nav__link" data-i18n="nav.home">Home</a></li>
-            <li><a href="#pillars" class="nav__link" data-i18n="nav.context">Context</a></li>
-            <li><a href="#products" class="nav__link" data-i18n="nav.platform">Platform</a></li>
-            <li><a href="#testimonials" class="nav__link" data-i18n="nav.testimonials">Testimonials</a></li>
-            <li><a href="#pricing" class="nav__link" data-i18n="pricing.label">Pricing</a></li>
-            <li><a href="#blog" class="nav__link" data-i18n="nav.blog">Blog</a></li>
-            <li><a href="#team" class="nav__link" data-i18n="nav.team">Team</a></li>
-            <li><a href="#cta" class="nav__link" data-i18n="nav.resources">Resources</a></li>
-          </ul>
-        </nav>
-
-        <div class="nav__actions">
-          <a href="https://vantagepmo-297ec.web.app" class="btn btn--primary" data-i18n="nav.login">Login</a>
-          <button class="nav__theme" id="themeSwitcher">
-            <span class="nav__theme-text" id="themeText">DARK</span>
-          </button>
-          <button class="nav__lang" id="langSwitcher" aria-label="Switch language">EN</button>
-          <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-
+      <div class="nav__actions">
+        <button class="icon-btn" id="langSwitcher" type="button" aria-label="Cambiar a español" data-i18n-aria="nav.langLabel">
+          <span class="icon-btn__text" id="langText">ES</span>
+        </button>
+        <button class="icon-btn" id="themeSwitcher" type="button" aria-pressed="false" aria-label="Light theme" data-i18n-aria="nav.themeLabel">
+          <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+          <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        </button>
+        <a href="https://vantagepmo-297ec.web.app" class="btn btn--quiet nav__login" data-i18n="nav.login">Log in</a>
+        <a href="Session_registration.html" class="btn btn--primary btn--sm" data-i18n="nav.cta">Start now</a>
+        <button class="icon-btn nav__menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu" data-i18n-aria="nav.menuOpen">
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
       </div>
+    </div>
+
+    <div class="sheet" id="mobileMenu" hidden>
+      <nav class="sheet__links" aria-label="Mobile navigation">
+        <a href="#platform" data-i18n="nav.platform">Platform</a>
+        <a href="#assistant" data-i18n="nav.assistant">AI assistant</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#team" data-i18n="nav.team">Team</a>
+        <a href="https://vantagepmo-297ec.web.app" data-i18n="nav.login">Log in</a>
+      </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
 
-    <!-- ============================================================
-         DOMINIO: hero
-         ============================================================ -->
-    <section class="hero" id="hero" aria-labelledby="hero-heading">
-      <div class="container">
-        <div class="hero__inner">
+    <!-- ============================================================ HERO -->
+    <section class="hero plate" id="hero" aria-labelledby="hero-heading">
+      <div class="graticule" aria-hidden="true"></div>
+      <div class="hero__grid wrap">
+        <div class="hero__copy">
+          <h1 class="hero__title" id="hero-heading" data-i18n="hero.heading">Centralize your projects, control your future.</h1>
+          <p class="hero__lead" data-i18n="hero.subheading">Vantage PMO brings clarity to every project. Real-time visibility, standardized processes, and the intelligence you need to lead.</p>
+          <div class="hero__actions">
+            <a href="Session_registration.html" class="btn btn--primary btn--lg">
+              <span data-i18n="hero.cta_primary">Start now</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+            <a href="#platform" class="btn btn--ghost btn--lg" data-i18n="hero.cta_secondary">See the platform</a>
+          </div>
+        </div>
 
-          <div class="hero__content">
-            <h1 class="hero__heading" id="hero-heading" data-i18n="hero.heading">
-              Centralize your projects, control your future.
-            </h1>
-            <p class="hero__subheading" data-i18n="hero.subheading">
-              Vantage PMO brings clarity to every project. Real-time visibility,
-              standardized processes, and the intelligence you need to lead.
-            </p>
-            <div class="hero__actions">
-              <a href="#onboarding" class="btn btn--green" data-i18n="hero.cta_primary">Start now</a>
-              <a href="#pillars"    class="btn btn--ghost" data-i18n="hero.cta_secondary">Learn more</a>
+        <figure class="observatory" aria-labelledby="obs-caption">
+          <div class="observatory__stage" id="orreryStage" tabindex="0" role="group"
+               aria-roledescription="3D portfolio view" aria-label="Sample portfolio in 3D. Use left and right arrow keys to rotate." data-i18n-aria="hero.orreryLabel">
+            <canvas class="observatory__canvas" id="orrery" aria-hidden="true"></canvas>
+            <div class="readout" id="readout" aria-live="polite">
+              <p class="readout__title" id="readoutTitle" data-i18n="hero.readout.title">Portfolio</p>
+              <p class="readout__meta" id="readoutMeta">4 projects</p>
+              <div class="readout__bar" aria-hidden="true"><span id="readoutBar"></span></div>
             </div>
           </div>
+          <figcaption class="observatory__legend" id="obs-caption">
+            <span class="sr-only" data-i18n="hero.legendIntro">Choose a project to inspect it:</span>
+            <div class="chips" id="projectChips" role="list"></div>
+            <ul class="key" aria-label="Status key" data-i18n-aria="hero.keyLabel">
+              <li class="key--ok" data-i18n="state.ok">On track</li>
+              <li class="key--warn" data-i18n="state.warn">At risk</li>
+              <li class="key--bad" data-i18n="state.bad">Delayed</li>
+            </ul>
+            <p class="observatory__note" data-i18n="hero.note">Sample portfolio. Each orbit is a project: the bright arc is its progress, the light is its health.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
 
-          <div class="hero__media">
-            <div class="hero__image">
-              <img src="public/assets/images/hero/hero.png" alt="Project management dashboard" />
+    <!-- ============================================================ PILLARS -->
+    <section class="pillars paper" id="pillars" aria-labelledby="pillars-heading">
+      <div class="wrap pillars__grid">
+        <header class="pillars__head">
+          <h2 class="h2" id="pillars-heading" data-i18n="pillars.heading">Three pillars of management</h2>
+          <p class="lead" data-i18n="pillars.subheading">Everything you need to run projects well</p>
+        </header>
+
+        <ol class="pillars__list">
+          <li class="pillar">
+            <img class="pillar__img" src="public/assets/images/pillars/pillar-01.webp" alt="" width="576" height="342" loading="lazy" decoding="async" />
+            <div class="pillar__body">
+              <h3 class="pillar__title" data-i18n="pillars.card1.label">Control</h3>
+              <p class="pillar__claim" data-i18n="pillars.card1.title">One place for all</p>
+              <p class="pillar__text" data-i18n="pillars.card1.text">Stop chasing project data across systems.</p>
+              <a href="#platform" class="link"><span data-i18n="pillars.card1.cta">Explore the platform</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             </div>
+          </li>
+          <li class="pillar">
+            <img class="pillar__img" src="public/assets/images/pillars/pillar-02.webp" alt="" width="576" height="342" loading="lazy" decoding="async" />
+            <div class="pillar__body">
+              <h3 class="pillar__title" data-i18n="pillars.card2.label">Visibility</h3>
+              <p class="pillar__claim" data-i18n="pillars.card2.title">See what matters now</p>
+              <p class="pillar__text" data-i18n="pillars.card2.text">Know your status in real time.</p>
+              <a href="#hero" class="link"><span data-i18n="pillars.card2.cta">See the portfolio view</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </li>
+          <li class="pillar">
+            <img class="pillar__img" src="public/assets/images/pillars/pillar-03.webp" alt="" width="640" height="446" loading="lazy" decoding="async" />
+            <div class="pillar__body">
+              <h3 class="pillar__title" data-i18n="pillars.card3.label">Clarity</h3>
+              <p class="pillar__claim" data-i18n="pillars.card3.title">Make decisions that move projects forward</p>
+              <p class="pillar__text" data-i18n="pillars.card3.text">Replace daily guesswork with answers you can trust.</p>
+              <a href="#assistant" class="link"><span data-i18n="pillars.card3.cta">Meet the assistant</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================ PLATFORM (3D flip carousel) -->
+    <section class="platform plate" id="platform" aria-labelledby="platform-heading">
+      <div class="wrap platform__head">
+        <h2 class="h2" id="platform-heading" data-i18n="products.heading">One platform, every need</h2>
+        <p class="lead" data-i18n="products.subheading">Each module solves a specific challenge, and together they power seamless project operations.</p>
+      </div>
+
+      <div class="deck" id="deck">
+        <ul class="deck__track" id="deckTrack" aria-label="Platform modules">
+          <!-- Las tarjetas se definen aquí; main.js añade el giro 3D -->
+          <li class="module" data-hue="0">
+            <div class="module__inner">
+              <article class="module__face module__face--front">
+                <h3 class="module__title" data-i18n="products.card1.heading">AI-driven planning, execution &amp; delivery</h3>
+                <img class="module__img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=640&q=70" alt="" width="640" height="427" loading="lazy" decoding="async" />
+                <p class="module__tag" data-i18n="products.card1.tag">Projects</p>
+              </article>
+              <article class="module__face module__face--back">
+                <p class="module__text" data-i18n="products.card1.text">Drive projects and processes forward at scale, with intelligence that executes, builds, and automates for you.</p>
+                <a href="Session_registration.html" class="btn btn--primary btn--sm" data-i18n="products.cta">Get started</a>
+              </article>
+            </div>
+            <button class="module__turn" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-turn"/></svg><span data-i18n="products.turn">How it works</span></button>
+          </li>
+          <li class="module" data-hue="1">
+            <div class="module__inner">
+              <article class="module__face module__face--front">
+                <h3 class="module__title" data-i18n="products.card2.heading">Portfolio visibility that gives you control</h3>
+                <img class="module__img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=640&q=70" alt="" width="640" height="427" loading="lazy" decoding="async" />
+                <p class="module__tag" data-i18n="products.card2.tag">Portfolio</p>
+              </article>
+              <article class="module__face module__face--back">
+                <p class="module__text" data-i18n="products.card2.text">See every project at once. Track health, risk, and progress from a single command center.</p>
+                <a href="Session_registration.html" class="btn btn--primary btn--sm" data-i18n="products.cta">Get started</a>
+              </article>
+            </div>
+            <button class="module__turn" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-turn"/></svg><span data-i18n="products.turn">How it works</span></button>
+          </li>
+          <li class="module" data-hue="2">
+            <div class="module__inner">
+              <article class="module__face module__face--front">
+                <h3 class="module__title" data-i18n="products.card3.heading">Data-first decisions that deliver results</h3>
+                <img class="module__img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=640&q=70" alt="" width="640" height="427" loading="lazy" decoding="async" />
+                <p class="module__tag" data-i18n="products.card3.tag">Analytics</p>
+              </article>
+              <article class="module__face module__face--back">
+                <p class="module__text" data-i18n="products.card3.text">Turn raw project data into leadership intelligence. Forecast better, act faster.</p>
+                <a href="Session_registration.html" class="btn btn--primary btn--sm" data-i18n="products.cta">Get started</a>
+              </article>
+            </div>
+            <button class="module__turn" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-turn"/></svg><span data-i18n="products.turn">How it works</span></button>
+          </li>
+          <li class="module" data-hue="3">
+            <div class="module__inner">
+              <article class="module__face module__face--front">
+                <h3 class="module__title" data-i18n="products.card4.heading">Automate the work no one wants to do</h3>
+                <img class="module__img" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=640&q=70" alt="" width="640" height="427" loading="lazy" decoding="async" />
+                <p class="module__tag" data-i18n="products.card4.tag">Automation</p>
+              </article>
+              <article class="module__face module__face--back">
+                <p class="module__text" data-i18n="products.card4.text">From reminders to reports, let smart automation handle the repetitive tasks so your team can focus on what matters.</p>
+                <a href="Session_registration.html" class="btn btn--primary btn--sm" data-i18n="products.cta">Get started</a>
+              </article>
+            </div>
+            <button class="module__turn" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-turn"/></svg><span data-i18n="products.turn">How it works</span></button>
+          </li>
+          <li class="module" data-hue="4">
+            <div class="module__inner">
+              <article class="module__face module__face--front">
+                <h3 class="module__title" data-i18n="products.card5.heading">Right people on the right projects</h3>
+                <img class="module__img" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=640&q=70" alt="" width="640" height="427" loading="lazy" decoding="async" />
+                <p class="module__tag" data-i18n="products.card5.tag">Resources</p>
+              </article>
+              <article class="module__face module__face--back">
+                <p class="module__text" data-i18n="products.card5.text">Track capacity, allocate resources intelligently, and prevent burnout before it starts.</p>
+                <a href="Session_registration.html" class="btn btn--primary btn--sm" data-i18n="products.cta">Get started</a>
+              </article>
+            </div>
+            <button class="module__turn" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-turn"/></svg><span data-i18n="products.turn">How it works</span></button>
+          </li>
+          <li class="module" data-hue="5">
+            <div class="module__inner">
+              <article class="module__face module__face--front">
+                <h3 class="module__title" data-i18n="products.card6.heading">Reports that actually get read</h3>
+                <img class="module__img" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=640&q=70" alt="" width="640" height="427" loading="lazy" decoding="async" />
+                <p class="module__tag" data-i18n="products.card6.tag">Reporting</p>
+              </article>
+              <article class="module__face module__face--back">
+                <p class="module__text" data-i18n="products.card6.text">Auto-generated stakeholder reports with the metrics that matter, delivered on your schedule.</p>
+                <a href="Session_registration.html" class="btn btn--primary btn--sm" data-i18n="products.cta">Get started</a>
+              </article>
+            </div>
+            <button class="module__turn" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-turn"/></svg><span data-i18n="products.turn">How it works</span></button>
+          </li>
+          <li class="module" data-hue="6">
+            <div class="module__inner">
+              <article class="module__face module__face--front">
+                <h3 class="module__title" data-i18n="products.card7.heading">Connect every tool your team already uses</h3>
+                <img class="module__img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=640&q=70" alt="" width="640" height="427" loading="lazy" decoding="async" />
+                <p class="module__tag" data-i18n="products.card7.tag">Integrations</p>
+              </article>
+              <article class="module__face module__face--back">
+                <p class="module__text" data-i18n="products.card7.text">Native integrations with Jira, Slack, Teams, and 40+ tools. One source of truth, zero friction.</p>
+                <a href="Session_registration.html" class="btn btn--primary btn--sm" data-i18n="products.cta">Get started</a>
+              </article>
+            </div>
+            <button class="module__turn" type="button" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-turn"/></svg><span data-i18n="products.turn">How it works</span></button>
+          </li>
+        </ul>
+
+        <div class="deck__controls wrap">
+          <button class="round-btn" id="deckPrev" type="button" aria-label="Previous module" data-i18n-aria="products.prev"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+          <p class="deck__count" id="deckCount" aria-live="polite">1 / 7</p>
+          <button class="round-btn" id="deckNext" type="button" aria-label="Next module" data-i18n-aria="products.next"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ RESULTS (scroll-driven orrery) -->
+    <section class="results paper" id="results" aria-labelledby="results-heading">
+      <h2 class="sr-only" id="results-heading" data-i18n="features.sectionTitle">What changes with Vantage PMO</h2>
+      <div class="results__layout wrap">
+        <div class="results__instrument" aria-hidden="true">
+          <div class="results__plate">
+            <canvas id="orreryStory"></canvas>
+          </div>
+        </div>
+
+        <div class="results__items">
+          <article class="result" data-step="0">
+            <h3 class="result__title" data-i18n="features.f1.title">What changes when you take control</h3>
+            <p class="result__text" data-i18n="features.f1.text">Projects move faster. Teams understand what matters. Leaders make better calls.</p>
+          </article>
+          <article class="result" data-step="1">
+            <h3 class="result__title" data-i18n="features.f2.title">Projects finish on time, teams stay aligned</h3>
+            <p class="result__text" data-i18n="features.f2.text">Delays disappear when everyone sees the same picture. Vantage PMO cuts through the noise so your teams move together, not in circles.</p>
+          </article>
+          <article class="result" data-step="2">
+            <h3 class="result__title" data-i18n="features.f3.title">Communication that actually works</h3>
+            <p class="result__text" data-i18n="features.f3.text">No more waiting for status updates or hunting down information. Your teams know what's expected, and leaders know what's happening, right now.</p>
+          </article>
+          <article class="result" data-step="3">
+            <h3 class="result__title" data-i18n="features.f4.title">Decisions built on facts, not feelings</h3>
+            <p class="result__text" data-i18n="features.f4.text">Real data replaces guesswork. Your leadership team makes smarter calls, backed by the numbers, not just experience.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ AI ASSISTANT -->
+    <section class="assistant plate" id="assistant" aria-labelledby="assistant-heading">
+      <div class="wrap assistant__grid">
+        <div class="assistant__copy">
+          <h2 class="h2" id="assistant-heading" data-i18n="ai.heading">Your smart project assistant</h2>
+          <p class="lead" data-i18n="ai.subheading">Ask anything. Get answers backed by your real project data.</p>
+
+          <div class="prompts" id="prompts" role="tablist" aria-label="Example questions" data-i18n-aria="ai.promptsLabel">
+            <button class="prompt" role="tab" id="tab-0" aria-controls="panel-0" aria-selected="true" tabindex="0"><span data-i18n="ai.prompt1">Create a project plan</span><i class="prompt__timer" aria-hidden="true"></i></button>
+            <button class="prompt" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="false" tabindex="-1"><span data-i18n="ai.prompt2">Summarize project status</span><i class="prompt__timer" aria-hidden="true"></i></button>
+            <button class="prompt" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1"><span data-i18n="ai.prompt3">Identify at-risk tasks</span><i class="prompt__timer" aria-hidden="true"></i></button>
+            <button class="prompt" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1"><span data-i18n="ai.prompt4">Generate a stakeholder report</span><i class="prompt__timer" aria-hidden="true"></i></button>
+            <button class="prompt" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1"><span data-i18n="ai.prompt5">Forecast delivery date</span><i class="prompt__timer" aria-hidden="true"></i></button>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         DOMINIO: pillars
-         ============================================================ -->
-    <section class="pillars" id="pillars" aria-labelledby="pillars-heading">
-      <div class="container">
-
-        <div class="pillars__header">
-          <span class="label" data-i18n="pillars.label">Context</span>
-          <h2 class="pillars__heading" id="pillars-heading" data-i18n="pillars.heading">
-            Three pillars of management
-          </h2>
-          <p class="pillars__subheading" data-i18n="pillars.subheading">
-            Everything you need to run projects well
-          </p>
+          <button class="autoplay" id="aiAutoplay" type="button" aria-pressed="true">
+            <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"/></svg>
+            <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"/></svg>
+            <span class="autoplay__on" data-i18n="ai.pause">Pause the tour</span>
+            <span class="autoplay__off" data-i18n="ai.play">Resume the tour</span>
+          </button>
         </div>
 
-        <div class="pillars__grid">
+        <div class="console" id="console">
+          <div class="console__chrome" aria-hidden="true"><i></i><i></i><i></i><span>Vantage AI</span></div>
 
-          <article class="pillar-card">
-            <div class="pillar-card__image pillar-card__image--1">
-              <img src="public/assets/images/pillars/pillar-01.png" alt="Control" />
+          <!-- Panel 0: plan -->
+          <div class="panel is-active" role="tabpanel" id="panel-0" aria-labelledby="tab-0">
+            <div class="panel__head"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg><span data-i18n="ai.p0.title">New project plan</span></div>
+            <div class="plan">
+              <div class="plan__row"><span class="plan__k" data-i18n="ai.p0.objective">Objective</span><span class="plan__v" data-i18n="ai.p0.objectiveValue">Launch the client portal by Q3</span></div>
+              <div class="plan__row"><span class="plan__k" data-i18n="ai.p0.milestones">Milestones</span>
+                <ol class="plan__milestones">
+                  <li><b data-i18n="ai.p0.w1">Week 1</b><span data-i18n="ai.p0.m1">Scope &amp; kickoff</span></li>
+                  <li><b data-i18n="ai.p0.w3">Week 3</b><span data-i18n="ai.p0.m2">Design approved</span></li>
+                  <li><b data-i18n="ai.p0.w6">Week 6</b><span data-i18n="ai.p0.m3">Release to clients</span></li>
+                </ol>
+              </div>
+              <div class="plan__row"><span class="plan__k" data-i18n="ai.p0.team">Team</span>
+                <span class="avatars"><i style="--a:#7FE0C9"></i><i style="--a:#8EC5F2"></i><i style="--a:#FFB547"></i><em>+3</em></span>
+              </div>
             </div>
-            <div class="pillar-card__body">
-              <span class="pillar-card__label" data-i18n="pillars.card1.label">Control</span>
-              <h3 class="pillar-card__title" data-i18n="pillars.card1.title">One place for all</h3>
-              <p  class="pillar-card__text"  data-i18n="pillars.card1.text">
-                Stop drifting across systems for project data.
-              </p>
-              <a href="#" class="link-arrow" data-i18n="pillars.card1.cta">Explore</a>
-            </div>
-          </article>
-
-          <article class="pillar-card">
-            <div class="pillar-card__image pillar-card__image--2">
-              <img src="public/assets/images/pillars/pillar-02.png" alt="Visibility" />
-            </div>
-            <div class="pillar-card__body">
-              <span class="pillar-card__label" data-i18n="pillars.card2.label">Visibility</span>
-              <h3 class="pillar-card__title" data-i18n="pillars.card2.title">See what matters now</h3>
-              <p  class="pillar-card__text"  data-i18n="pillars.card2.text">
-                Know your status in real time.
-              </p>
-              <a href="#" class="link-arrow" data-i18n="pillars.card2.cta">Explore</a>
-            </div>
-          </article>
-
-          <article class="pillar-card">
-            <div class="pillar-card__image pillar-card__image--3">
-              <img src="public/assets/images/pillars/pillar-03.png" alt="Clarity" />
-            </div>
-            <div class="pillar-card__body">
-              <span class="pillar-card__label" data-i18n="pillars.card3.label">Clarity</span>
-              <h3 class="pillar-card__title" data-i18n="pillars.card3.title">
-                Make decisions that move projects forward
-              </h3>
-              <p  class="pillar-card__text"  data-i18n="pillars.card3.text">
-                Stop guesses you cannot believe every day.
-              </p>
-              <a href="#" class="link-arrow" data-i18n="pillars.card3.cta">Explore</a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         DOMINIO: products
-         ============================================================ -->
-    <section class="products" id="products">
-      <div class="container">
-        <div class="products__header">
-          <span class="label" data-i18n="products.label">Platform</span>
-          <h2 class="products__heading" data-i18n="products.heading">One platform, every need</h2>
-          <p class="products__subheading" data-i18n="products.subheading">
-            Each module solves a specific challenge, and together they power seamless project operations.
-          </p>
-        </div>
-      </div>
-
-      <div class="products__track-wrap">
-        <div class="products__track">
-
-          <article class="product-card product-card--green">
-            <div class="product-card__inner">
-              <span class="product-card__tag" data-i18n="products.card1.tag">Vantage PMO &middot; Projects</span>
-              <h3 class="product-card__heading" data-i18n="products.card1.heading">
-                AI-driven planning, execution &amp; delivery
-              </h3>
-              <p class="product-card__text" data-i18n="products.card1.text">
-                Drive projects and processes forward at scale, with intelligence that executes, builds, and automates for you.
-              </p>
-              <a href="#" class="btn btn--dark" data-i18n="products.card1.cta">Get started</a>
-            </div>
-            <div class="product-card__visual" aria-hidden="true">
-              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="" />
-            </div>
-          </article>
-
-          <article class="product-card product-card--purple">
-            <div class="product-card__inner">
-              <span class="product-card__tag" data-i18n="products.card2.tag">Vantage PMO &middot; Portfolio</span>
-              <h3 class="product-card__heading" data-i18n="products.card2.heading">
-                Portfolio visibility that gives you control
-              </h3>
-              <p class="product-card__text" data-i18n="products.card2.text">
-                See every project at once. Track health, risk, and progress from a single command center.
-              </p>
-              <a href="#" class="btn btn--dark" data-i18n="products.card2.cta">Get started</a>
-            </div>
-            <div class="product-card__visual" aria-hidden="true">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="" />
-            </div>
-          </article>
-
-          <article class="product-card product-card--cyan">
-            <div class="product-card__inner">
-              <span class="product-card__tag" data-i18n="products.card3.tag">Vantage PMO &middot; Analytics</span>
-              <h3 class="product-card__heading" data-i18n="products.card3.heading">
-                Data-first decisions that deliver results
-              </h3>
-              <p class="product-card__text" data-i18n="products.card3.text">
-                Turn raw project data into leadership intelligence. Forecast better, act faster.
-              </p>
-              <a href="#" class="btn btn--dark" data-i18n="products.card3.cta">Get started</a>
-            </div>
-            <div class="product-card__visual" aria-hidden="true">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="" />
-            </div>
-          </article>
-
-          <article class="product-card product-card--amber">
-            <div class="product-card__inner">
-              <span class="product-card__tag" data-i18n="products.card4.tag">Vantage PMO &middot; Automation</span>
-              <h3 class="product-card__heading" data-i18n="products.card4.heading">
-                Automate the work no one wants to do
-              </h3>
-              <p class="product-card__text" data-i18n="products.card4.text">
-                From reminders to reports, let smart automation handle the repetitive tasks so your team can focus on what matters.
-              </p>
-              <a href="#" class="btn btn--dark" data-i18n="products.card4.cta">Get started</a>
-            </div>
-            <div class="product-card__visual" aria-hidden="true">
-              <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80" alt="" />
-            </div>
-          </article>
-
-          <article class="product-card product-card--rose">
-            <div class="product-card__inner">
-              <span class="product-card__tag" data-i18n="products.card5.tag">Vantage PMO &middot; Resources</span>
-              <h3 class="product-card__heading" data-i18n="products.card5.heading">
-                Right people on the right projects
-              </h3>
-              <p class="product-card__text" data-i18n="products.card5.text">
-                Track capacity, allocate resources intelligently, and prevent burnout before it starts.
-              </p>
-              <a href="#" class="btn btn--dark" data-i18n="products.card5.cta">Get started</a>
-            </div>
-            <div class="product-card__visual" aria-hidden="true">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="" />
-            </div>
-          </article>
-
-          <article class="product-card product-card--slate">
-            <div class="product-card__inner">
-              <span class="product-card__tag" data-i18n="products.card6.tag">Vantage PMO &middot; Reporting</span>
-              <h3 class="product-card__heading" data-i18n="products.card6.heading">
-                Reports that actually get read
-              </h3>
-              <p class="product-card__text" data-i18n="products.card6.text">
-                Auto-generated stakeholder reports with the metrics that matter — delivered on your schedule.
-              </p>
-              <a href="#" class="btn btn--dark" data-i18n="products.card6.cta">Get started</a>
-            </div>
-            <div class="product-card__visual" aria-hidden="true">
-              <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="" />
-            </div>
-          </article>
-
-          <article class="product-card product-card--indigo">
-            <div class="product-card__inner">
-              <span class="product-card__tag" data-i18n="products.card7.tag">Vantage PMO &middot; Integrations</span>
-              <h3 class="product-card__heading" data-i18n="products.card7.heading">
-                Connect every tool your team already uses
-              </h3>
-              <p class="product-card__text" data-i18n="products.card7.text">
-                Native integrations with Jira, Slack, Teams, and 40+ tools. One source of truth, zero friction.
-              </p>
-              <a href="#" class="btn btn--dark" data-i18n="products.card7.cta">Get started</a>
-            </div>
-            <div class="product-card__visual" aria-hidden="true">
-              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="" />
-            </div>
-          </article>
-
-        </div>
-
-        <div class="products__nav">
-          <button class="products__nav-btn" id="productsPrev" aria-label="Previous">&larr;</button>
-          <div class="products__dots" id="productsDots"></div>
-          <button class="products__nav-btn" id="productsNext" aria-label="Next">&rarr;</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         DOMINIO: features
-         ============================================================ -->
-    <section class="features" id="features">
-      <div class="features__layout">
-
-          <!-- Número sticky izquierdo -->
-          <div class="features__sticky">
-            <div class="features__num-wrap" aria-hidden="true">
-              <span class="features__num is-active">01</span>
-              <span class="features__num">02</span>
-              <span class="features__num">03</span>
-              <span class="features__num">04</span>
-            </div>
+            <p class="answer" data-i18n="ai.p0.answer">I've drafted a 6-week project plan with 3 milestones, assigned to 6 team members. Review and adjust before publishing.</p>
           </div>
 
-          <!-- Items que hacen scroll -->
-          <div class="features__items">
-
-            <div class="feature-item" data-index="0">
-              <div class="feature-item__body">
-                <span class="label" data-i18n="features.f1.label">Results</span>
-                <h2 class="feature-item__title" data-i18n="features.f1.title">
-                  What changes when you take control
-                </h2>
-                <p class="feature-item__text" data-i18n="features.f1.text">
-                  Projects move faster. Teams understand what matters. Leaders make better calls.
-                </p>
-                <div class="feature-item__links">
-                  <a href="#" class="link-arrow link-pill" data-i18n="features.f1.cta1">Discover</a>
-                  <a href="#" class="link-arrow" data-i18n="features.f1.cta2">Learn</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="feature-item" data-index="1">
-              <div class="feature-item__body">
-                <span class="label" data-i18n="features.f2.label">Aligned</span>
-                <h2 class="feature-item__title" data-i18n="features.f2.title">
-                  Projects finish on time, teams stay aligned
-                </h2>
-                <p class="feature-item__text" data-i18n="features.f2.text">
-                  Delays disappear when everyone sees the same picture. Vantage PMO cuts
-                  through the noise so your teams move together, not in circles.
-                </p>
-                <div class="feature-item__links">
-                  <a href="#" class="link-arrow" data-i18n="features.f2.cta1">Learn</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="feature-item" data-index="2">
-              <div class="feature-item__body">
-                <span class="label" data-i18n="features.f3.label">Clarity</span>
-                <h2 class="feature-item__title" data-i18n="features.f3.title">
-                  Communication that actually works
-                </h2>
-                <p class="feature-item__text" data-i18n="features.f3.text">
-                  No more waiting for status updates or hunting down information. Your teams
-                  know what's expected, and leaders know what's happening, right now.
-                </p>
-                <div class="feature-item__links">
-                  <a href="#" class="link-arrow" data-i18n="features.f3.cta1">Learn</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="feature-item" data-index="3">
-              <div class="feature-item__body">
-                <span class="label" data-i18n="features.f4.label">Confidence</span>
-                <h2 class="feature-item__title" data-i18n="features.f4.title">
-                  Decisions built on facts, not feelings
-                </h2>
-                <p class="feature-item__text" data-i18n="features.f4.text">
-                  Raw data replaces guesswork. Your leadership team makes smarter calls,
-                  backed by the numbers, not just experience.
-                </p>
-                <div class="feature-item__links">
-                  <a href="#" class="link-arrow link-pill" data-i18n="features.f4.cta1">Explore</a>
-                  <a href="#" class="link-arrow" data-i18n="features.f4.cta2">Learn</a>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- /.features__items -->
-        </div><!-- /.features__layout -->
-    </section>
-
-    <!-- ============================================================
-         DOMINIO: ai
-         ============================================================ -->
-    <section class="ai-section" id="ai">
-      <div class="container">
-        <div class="ai-section__inner">
-
-          <!-- Izquierda: prompts -->
-          <div class="ai-section__left">
-            <span class="label" data-i18n="ai.label">Intelligence</span>
-            <h2 class="ai-section__heading" data-i18n="ai.heading">Your smart project assistant</h2>
-            <p class="ai-section__subheading" data-i18n="ai.subheading">
-              Ask anything. Get answers backed by your real project data.
-            </p>
-
-            <div class="ai-section__prompts">
-              <div class="ai-prompt ai-prompt--active" data-panel="0"><span data-i18n="ai.prompt1">Create a project plan</span></div>
-              <div class="ai-prompt" data-panel="1"><span data-i18n="ai.prompt2">Summarize project status</span></div>
-              <div class="ai-prompt" data-panel="2"><span data-i18n="ai.prompt3">Identify at-risk tasks</span></div>
-              <div class="ai-prompt" data-panel="3"><span data-i18n="ai.prompt4">Generate a stakeholder report</span></div>
-              <div class="ai-prompt" data-panel="4"><span data-i18n="ai.prompt5">Forecast delivery date</span></div>
-            </div>
-
-            <div class="ai-section__input">
-              <input type="text" data-i18n-placeholder="ai.input" placeholder="Ask Vantage AI..." aria-label="Ask AI" />
-              <button class="ai-section__send" aria-label="Send">&rarr;</button>
-            </div>
+          <!-- Panel 1: status (filas que voltean como un tablero) -->
+          <div class="panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" hidden>
+            <div class="panel__head"><svg class="icon" aria-hidden="true"><use href="#i-orbit"/></svg><span data-i18n="ai.p1.title">Project portfolio</span></div>
+            <table class="board">
+              <thead><tr><th data-i18n="ai.th.project">Project</th><th data-i18n="ai.th.progress">Progress</th><th data-i18n="ai.th.health">Health</th></tr></thead>
+              <tbody>
+                <tr><td>Alpha Launch</td><td><span class="flip" data-flip="78%">78%</span></td><td><span class="state state--ok" data-i18n="state.ok">On track</span></td></tr>
+                <tr><td>Beta Rollout</td><td><span class="flip" data-flip="42%">42%</span></td><td><span class="state state--bad" data-i18n="state.bad">Delayed</span></td></tr>
+                <tr><td>Q3 Migration</td><td><span class="flip" data-flip="91%">91%</span></td><td><span class="state state--ok" data-i18n="state.ok">On track</span></td></tr>
+                <tr><td>CRM Update</td><td><span class="flip" data-flip="55%">55%</span></td><td><span class="state state--warn" data-i18n="state.warn">At risk</span></td></tr>
+              </tbody>
+            </table>
+            <p class="answer" data-i18n="ai.p1.answer">2 of 4 projects are on track. Beta Rollout is delayed at 42% progress and CRM Update is at risk. I recommend reviewing Beta Rollout first.</p>
           </div>
 
-          <!-- Derecha: mockups por prompt -->
-          <div class="ai-section__right">
-
-            <!-- Panel 0: Create a project plan -->
-            <div class="ai-mockup ai-panel ai-panel--active" data-panel="0">
-              <div class="ai-mockup__header">
-                <span class="ai-mockup__title">&#x25C8; New Project Plan</span>
-              </div>
-              <div class="ai-mockup__plan">
-                <div class="ai-plan__section">
-                  <span class="ai-plan__label">Objective</span>
-                  <div class="ai-plan__line ai-plan__line--wide"></div>
-                </div>
-                <div class="ai-plan__section">
-                  <span class="ai-plan__label">Milestones</span>
-                  <div class="ai-plan__milestone"><span class="ai-badge ai-badge--blue">Week 1</span><div class="ai-plan__line ai-plan__line--mid"></div></div>
-                  <div class="ai-plan__milestone"><span class="ai-badge ai-badge--blue">Week 3</span><div class="ai-plan__line ai-plan__line--long"></div></div>
-                  <div class="ai-plan__milestone"><span class="ai-badge ai-badge--blue">Week 6</span><div class="ai-plan__line ai-plan__line--mid"></div></div>
-                </div>
-                <div class="ai-plan__section">
-                  <span class="ai-plan__label">Team</span>
-                  <div class="ai-plan__avatars">
-                    <div class="ai-avatar ai-avatar--green"></div>
-                    <div class="ai-avatar ai-avatar--blue"></div>
-                    <div class="ai-avatar ai-avatar--rose"></div>
-                    <span class="ai-plan__more">+3</span>
-                  </div>
-                </div>
-              </div>
-              <div class="ai-mockup__chat">
-                <div class="ai-chat-bubble ai-chat-bubble--user">
-                  <span data-i18n="ai.prompt1">Create a project plan</span>
-                  <div class="ai-chat-avatar"></div>
-                </div>
-                <div class="ai-chat-bubble ai-chat-bubble--ai">
-                  <div class="ai-chat-icon">&#x25C8;</div>
-                  <p>I've drafted a 6-week project plan with 3 milestones, assigned to 6 team members. Review and adjust before publishing.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Panel 1: Summarize project status -->
-            <div class="ai-mockup ai-panel" data-panel="1">
-              <div class="ai-mockup__header">
-                <span class="ai-mockup__title">Project Portfolio</span>
-              </div>
-              <div class="ai-mockup__table">
-                <div class="ai-mockup__row ai-mockup__row--head">
-                  <span>Project</span><span>Health</span><span>Progress</span><span>Status</span>
-                </div>
-                <div class="ai-mockup__row">
-                  <span>Alpha Launch</span>
-                  <span class="ai-badge ai-badge--green">On track</span>
-                  <div class="ai-progress"><div style="width:78%"></div></div>
-                  <span class="ai-badge ai-badge--blue">Active</span>
-                </div>
-                <div class="ai-mockup__row">
-                  <span>Beta Rollout</span>
-                  <span class="ai-badge ai-badge--red">At risk</span>
-                  <div class="ai-progress"><div style="width:42%"></div></div>
-                  <span class="ai-badge ai-badge--orange">Delayed</span>
-                </div>
-                <div class="ai-mockup__row">
-                  <span>Q3 Migration</span>
-                  <span class="ai-badge ai-badge--green">On track</span>
-                  <div class="ai-progress"><div style="width:91%"></div></div>
-                  <span class="ai-badge ai-badge--blue">Active</span>
-                </div>
-                <div class="ai-mockup__row">
-                  <span>CRM Update</span>
-                  <span class="ai-badge ai-badge--yellow">Medium</span>
-                  <div class="ai-progress"><div style="width:55%"></div></div>
-                  <span class="ai-badge ai-badge--blue">Active</span>
-                </div>
-              </div>
-              <div class="ai-mockup__chat">
-                <div class="ai-chat-bubble ai-chat-bubble--user">
-                  <span data-i18n="ai.prompt2">Summarize project status</span>
-                  <div class="ai-chat-avatar"></div>
-                </div>
-                <div class="ai-chat-bubble ai-chat-bubble--ai">
-                  <div class="ai-chat-icon">&#x25C8;</div>
-                  <p>3 of 4 projects are on track. Beta Rollout is flagged at-risk with 42% progress and a delayed status. Recommend immediate review.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Panel 2: Identify at-risk tasks -->
-            <div class="ai-mockup ai-panel" data-panel="2">
-              <div class="ai-mockup__header">
-                <span class="ai-mockup__title">&#x26A0; At-Risk Tasks</span>
-              </div>
-              <div class="ai-mockup__table">
-                <div class="ai-mockup__row ai-mockup__row--head">
-                  <span>Task</span><span>Owner</span><span>Due</span><span>Risk</span>
-                </div>
-                <div class="ai-mockup__row">
-                  <span>API Integration</span>
-                  <div class="ai-avatar ai-avatar--green"></div>
-                  <span>Apr 28</span>
-                  <span class="ai-badge ai-badge--red">High</span>
-                </div>
-                <div class="ai-mockup__row">
-                  <span>UI Handoff</span>
-                  <div class="ai-avatar ai-avatar--blue"></div>
-                  <span>May 02</span>
-                  <span class="ai-badge ai-badge--orange">Medium</span>
-                </div>
-                <div class="ai-mockup__row">
-                  <span>QA Testing</span>
-                  <div class="ai-avatar ai-avatar--rose"></div>
-                  <span>May 05</span>
-                  <span class="ai-badge ai-badge--red">High</span>
-                </div>
-                <div class="ai-mockup__row">
-                  <span>Stakeholder Review</span>
-                  <div class="ai-avatar ai-avatar--amber"></div>
-                  <span>May 10</span>
-                  <span class="ai-badge ai-badge--yellow">Low</span>
-                </div>
-              </div>
-              <div class="ai-mockup__chat">
-                <div class="ai-chat-bubble ai-chat-bubble--user">
-                  <span data-i18n="ai.prompt3">Identify at-risk tasks</span>
-                  <div class="ai-chat-avatar"></div>
-                </div>
-                <div class="ai-chat-bubble ai-chat-bubble--ai">
-                  <div class="ai-chat-icon">&#x25C8;</div>
-                  <p>Found 2 high-risk tasks: API Integration (Apr 28) and QA Testing (May 5). Both are overdue relative to planned progress.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Panel 3: Generate a stakeholder report -->
-            <div class="ai-mockup ai-panel" data-panel="3">
-              <div class="ai-mockup__header">
-                <span class="ai-mockup__title">&#x1F4CB; Stakeholder Report · Q2 2026</span>
-              </div>
-              <div class="ai-mockup__report">
-                <div class="ai-report__kpis">
-                  <div class="ai-kpi"><span class="ai-kpi__num">12</span><span class="ai-kpi__label">Active Projects</span></div>
-                  <div class="ai-kpi"><span class="ai-kpi__num ai-kpi__num--green">87%</span><span class="ai-kpi__label">On Schedule</span></div>
-                  <div class="ai-kpi"><span class="ai-kpi__num ai-kpi__num--red">3</span><span class="ai-kpi__label">At Risk</span></div>
-                </div>
-                <div class="ai-report__bars">
-                  <div class="ai-report__bar-row"><span>Alpha</span><div class="ai-progress"><div style="width:78%"></div></div><span>78%</span></div>
-                  <div class="ai-report__bar-row"><span>Beta</span><div class="ai-progress"><div style="width:42%;background:#ef4444"></div></div><span>42%</span></div>
-                  <div class="ai-report__bar-row"><span>Migration</span><div class="ai-progress"><div style="width:91%"></div></div><span>91%</span></div>
-                </div>
-              </div>
-              <div class="ai-mockup__chat">
-                <div class="ai-chat-bubble ai-chat-bubble--user">
-                  <span data-i18n="ai.prompt4">Generate a stakeholder report</span>
-                  <div class="ai-chat-avatar"></div>
-                </div>
-                <div class="ai-chat-bubble ai-chat-bubble--ai">
-                  <div class="ai-chat-icon">&#x25C8;</div>
-                  <p>Q2 report generated: 12 active projects, 87% on schedule, 3 flagged at-risk. Ready to export as PDF.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Panel 4: Forecast delivery date -->
-            <div class="ai-mockup ai-panel" data-panel="4">
-              <div class="ai-mockup__header">
-                <span class="ai-mockup__title">&#x1F4C5; Delivery Forecast</span>
-              </div>
-              <div class="ai-mockup__forecast">
-                <div class="ai-forecast__timeline">
-                  <div class="ai-forecast__row">
-                    <span>Alpha Launch</span>
-                    <div class="ai-forecast__bar"><div class="ai-forecast__fill ai-forecast__fill--green" style="width:80%"></div><span class="ai-forecast__date">May 12</span></div>
-                  </div>
-                  <div class="ai-forecast__row">
-                    <span>Beta Rollout</span>
-                    <div class="ai-forecast__bar"><div class="ai-forecast__fill ai-forecast__fill--red" style="width:55%"></div><span class="ai-forecast__date">Jun 03 ⚠</span></div>
-                  </div>
-                  <div class="ai-forecast__row">
-                    <span>Q3 Migration</span>
-                    <div class="ai-forecast__bar"><div class="ai-forecast__fill ai-forecast__fill--green" style="width:92%"></div><span class="ai-forecast__date">Apr 30</span></div>
-                  </div>
-                  <div class="ai-forecast__row">
-                    <span>CRM Update</span>
-                    <div class="ai-forecast__bar"><div class="ai-forecast__fill ai-forecast__fill--yellow" style="width:60%"></div><span class="ai-forecast__date">May 28</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="ai-mockup__chat">
-                <div class="ai-chat-bubble ai-chat-bubble--user">
-                  <span data-i18n="ai.prompt5">Forecast delivery date</span>
-                  <div class="ai-chat-avatar"></div>
-                </div>
-                <div class="ai-chat-bubble ai-chat-bubble--ai">
-                  <div class="ai-chat-icon">&#x25C8;</div>
-                  <p>Beta Rollout is at risk of missing its target. Based on current velocity, delivery is projected for Jun 3 — 12 days late.</p>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- /.ai-section__right -->
-      </div>
-    </section>
-
-    <!-- ============================================================
-         DOMINIO: about
-         ============================================================ -->
-    <section class="about" id="about" aria-labelledby="about-heading">
-      <div class="container">
-        <div class="about__inner">
-
-          <div class="about__content">
-            <span class="label" data-i18n="about.label">Progress</span>
-            <h2 class="about__heading" id="about-heading" data-i18n="about.heading">
-              Built by engineers who understand projects
-            </h2>
-            <p class="about__text" data-i18n="about.text">
-              MEPB started as OPC, where software engineers saw the same problem everywhere:
-              Projects failed not from lack of skills, but from lack of clarity. We built
-              Vantage PMO to fix that.
-            </p>
-            <div class="about__links">
-              <a href="#" class="link-arrow" data-i18n="about.cta1">About us</a>
-              <a href="#" class="link-arrow" data-i18n="about.cta2">Learn</a>
-            </div>
-            <div class="about__logos" aria-label="Trusted by">
-              <span class="about__logo-item">⬡ Webflow</span>
-              <span class="about__logo-item">◈ Relume</span>
-              <span class="about__logo-item">⬡ Webflow</span>
-              <span class="about__logo-item">◈ Relume</span>
-            </div>
+          <!-- Panel 2: tareas en riesgo -->
+          <div class="panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+            <div class="panel__head"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg><span data-i18n="ai.p2.title">At-risk tasks</span></div>
+            <table class="board">
+              <thead><tr><th data-i18n="ai.th.task">Task</th><th data-i18n="ai.th.due">Due</th><th data-i18n="ai.th.risk">Risk</th></tr></thead>
+              <tbody>
+                <tr><td>API Integration</td><td><span class="flip" data-day="8">Apr 28</span></td><td><span class="state state--bad" data-i18n="state.high">High</span></td></tr>
+                <tr><td>UI Handoff</td><td><span class="flip" data-day="12">May 02</span></td><td><span class="state state--warn" data-i18n="state.medium">Medium</span></td></tr>
+                <tr><td>QA Testing</td><td><span class="flip" data-day="15">May 05</span></td><td><span class="state state--bad" data-i18n="state.high">High</span></td></tr>
+                <tr><td>Stakeholder Review</td><td><span class="flip" data-day="20">May 10</span></td><td><span class="state state--ok" data-i18n="state.low">Low</span></td></tr>
+              </tbody>
+            </table>
+            <p class="answer" data-i18n="ai.p2.answer">Found 2 high-risk tasks: API Integration (Apr 28) and QA Testing (May 5). Both are behind their planned progress.</p>
           </div>
 
-          <div class="about__media">
-            <div class="about__image">
-              <img src="public/assets/images/about/about.png" alt="Team working together" />
-            </div>
+          <!-- Panel 3: reporte -->
+          <div class="panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+            <div class="panel__head"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg><span data-i18n="ai.p3.title">Stakeholder report · Q2</span></div>
+            <dl class="kpis">
+              <div><dt data-i18n="ai.p3.k1">Active projects</dt><dd><span class="flip" data-flip="12">12</span></dd></div>
+              <div><dt data-i18n="ai.p3.k2">On schedule</dt><dd class="is-ok"><span class="flip" data-flip="87%">87%</span></dd></div>
+              <div><dt data-i18n="ai.p3.k3">At risk</dt><dd class="is-warn"><span class="flip" data-flip="3">3</span></dd></div>
+            </dl>
+            <ul class="meters">
+              <li><span>Alpha</span><i style="--v:.78"></i><b>78%</b></li>
+              <li><span>Beta</span><i class="is-bad" style="--v:.42"></i><b>42%</b></li>
+              <li><span>Migration</span><i style="--v:.91"></i><b>91%</b></li>
+            </ul>
+            <p class="answer" data-i18n="ai.p3.answer">Q2 report generated: 12 active projects, 87% on schedule, 3 flagged at risk. Ready to export as PDF.</p>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         DOMINIO: onboarding
-         ============================================================ -->
-    <section class="onboarding" id="onboarding" aria-labelledby="onboarding-heading">
-      <div class="container">
-
-        <div class="onboarding__header">
-          <h2 class="onboarding__heading" id="onboarding-heading" data-i18n="onboarding.heading">
-            Getting started takes minutes, not months
-          </h2>
-          <p class="onboarding__subheading" data-i18n="onboarding.subheading">
-            Set up your workspace and bring your projects in. Vantage PMO handles the rest.
-          </p>
-        </div>
-
-        <div class="onboarding__steps">
-
-          <article class="step-card">
-            <div class="step-card__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                   xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
-                      stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round"/>
-                <polyline points="13,2 13,9 20,9"
-                          stroke="currentColor" stroke-width="2"
-                          stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="step-card__title" data-i18n="onboarding.step1.title">
-              Connect your projects to the platform
-            </h3>
-            <p class="step-card__text" data-i18n="onboarding.step1.text">
-              Import anything. Start fresh. Onboard your teams with standardized templates.
-            </p>
-            <a href="#" class="link-arrow" data-i18n="onboarding.step1.cta">Start now</a>
-          </article>
-
-          <article class="step-card">
-            <div class="step-card__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                   xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
-                      stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="12" cy="12" r="3"
-                        stroke="currentColor" stroke-width="2"/>
-              </svg>
-            </div>
-            <h3 class="step-card__title" data-i18n="onboarding.step2.title">
-              Watch your portfolio come into focus
-            </h3>
-            <p class="step-card__text" data-i18n="onboarding.step2.text">
-              See the status everywhere you need it. Projects. Todos. Plans.
-            </p>
-            <a href="#" class="link-arrow" data-i18n="onboarding.step2.cta">Start now</a>
-          </article>
-
-          <article class="step-card">
-            <div class="step-card__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                   xmlns="http://www.w3.org/2000/svg">
-                <line x1="18" y1="20" x2="18" y2="10"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <line x1="12" y1="20" x2="12" y2="4"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <line x1="6"  y1="20" x2="6"  y2="14"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="step-card__title" data-i18n="onboarding.step3.title">
-              Lead with confidence and data
-            </h3>
-            <p class="step-card__text" data-i18n="onboarding.step3.text">
-              Make decisions backed by intelligence, not just a habit.
-            </p>
-            <a href="#" class="link-arrow" data-i18n="onboarding.step3.cta">Start now</a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         DOMINIO: testimonials
-         ============================================================ -->
-    <section class="testimonials" id="testimonials" aria-labelledby="testimonials-heading">
-      <div class="container">
-
-        <div class="testimonials__header">
-          <h2 class="testimonials__heading" id="testimonials-heading"
-              data-i18n="testimonials.heading">Real voices</h2>
-          <p class="testimonials__subheading" data-i18n="testimonials.subheading">
-            What project leaders say about Vantage PMO
-          </p>
-        </div>
-
-        <div class="testimonials__grid">
-
-          <article class="testimonial-card">
-            <div class="testimonial-card__logo"></div>
-            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <blockquote class="testimonial-card__quote" data-i18n="testimonials.t1.quote">
-              We stopped losing track of deadlines the moment we switched. Now I sleep better.
-            </blockquote>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">
-                <img src="public/assets/images/testimonials/testimonial-2.jpeg" alt="Maria Rodriguez" />
-              </div>
-              <div>
-                <strong class="testimonial-card__name"
-                        data-i18n="testimonials.t1.name">Maria Rodriguez</strong>
-                <span class="testimonial-card__role"
-                      data-i18n="testimonials.t1.role">Team Lead, Relume</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="testimonial-card">
-            <div class="testimonial-card__logo"></div>
-            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <blockquote class="testimonial-card__quote" data-i18n="testimonials.t2.quote">
-              Visibility across all our projects went from chaotic to crystal clear in one week.
-            </blockquote>
-            <div class="testimonial-card__author">
-              <div class="testimonial-card__avatar">
-                <img src="public/assets/images/testimonials/testimonial-1.png" alt="James Carter" />
-                  </div>
-              <div>
-                <strong class="testimonial-card__name"
-                        data-i18n="testimonials.t2.name">James Carter</strong>
-                <span class="testimonial-card__role"
-                      data-i18n="testimonials.t2.role">PMO Director, Webflow</span>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         DOMINIO: pricing
-         ============================================================ -->
-    <section class="pricing" id="pricing" aria-labelledby="pricing-heading">
-      <div class="container">
-
-        <div class="pricing__header">
-          <span class="label" data-i18n="pricing.label">Pricing</span>
-          <h2 class="pricing__heading" id="pricing-heading" data-i18n="pricing.heading">
-            Choose your plan
-          </h2>
-          <p class="pricing__subheading" data-i18n="pricing.subheading">
-            No long-term contracts. Upgrade or cancel anytime.
-          </p>
-        </div>
-
-        <div class="pricing__grid">
-
-          <!-- BASIC PLAN -->
-          <article class="pricing-card">
-            <div class="pricing-card__header">
-              <h3 class="pricing-card__name" data-i18n="pricing.basic.name">BASIC</h3>
-              <div class="pricing-card__price">
-                <span class="pricing-card__amount" data-i18n="pricing.basic.price">19</span>
-                <span class="pricing-card__period" data-i18n="pricing.basic.period">/month</span>
-              </div>
-            </div>
-            <p class="pricing-card__description" data-i18n="pricing.basic.description">
-              Ideal for small homes that want to start automating their space.
-            </p>
-            <a href="#" class="btn btn--outline" data-i18n="pricing.basic.cta">Get started</a>
-            
-            <div class="pricing-card__features">
-              <ul class="pricing-features">
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.basic.features.0">Up to 8 devices</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.basic.features.1">Energy consumption reports</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.basic.features.2">24/7 support</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.basic.features.3">Remote on/off control</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.basic.features.4">Informative dashboard</span>
-                </li>
-                <li class="pricing-feature pricing-feature--unavailable">
-                  <span class="pricing-feature__check">✗</span>
-                  <span data-i18n="pricing.basic.unavailable.0">Advanced reports</span>
-                </li>
-                <li class="pricing-feature pricing-feature--unavailable">
-                  <span class="pricing-feature__check">✗</span>
-                  <span data-i18n="pricing.basic.unavailable.1">External integrations</span>
-                </li>
+          <!-- Panel 4: forecast a escala en un eje temporal -->
+          <div class="panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+            <div class="panel__head"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg><span data-i18n="ai.p4.title">Delivery forecast</span></div>
+            <div class="timeline" style="--start:0; --span:44">
+              <div class="timeline__axis" aria-hidden="true"><span style="--d:0" data-day="0">Apr 20</span><span style="--d:14" data-day="14">May 4</span><span style="--d:28" data-day="28">May 18</span><span style="--d:42" data-day="42">Jun 1</span></div>
+              <ul class="timeline__rows">
+                <li><span class="timeline__name">Q3 Migration</span><span class="timeline__track"><i class="is-ok" style="--d:10"></i></span><b data-day="10">Apr 30</b></li>
+                <li><span class="timeline__name">Alpha Launch</span><span class="timeline__track"><i class="is-ok" style="--d:22"></i></span><b data-day="22">May 12</b></li>
+                <li><span class="timeline__name">CRM Update</span><span class="timeline__track"><i class="is-warn" style="--d:38"></i></span><b data-day="38">May 28</b></li>
+                <li><span class="timeline__name">Beta Rollout</span><span class="timeline__track"><i class="is-bad" style="--d:44"></i><s style="--d:32"></s></span><b data-day="44">Jun 3</b></li>
               </ul>
             </div>
-          </article>
-
-          <!-- BUSINESS PLAN (HIGHLIGHTED) -->
-          <article class="pricing-card pricing-card--featured">
-            <div class="pricing-card__badge" data-i18n="pricing.business.badge">MOST POPULAR</div>
-            <div class="pricing-card__header">
-              <h3 class="pricing-card__name" data-i18n="pricing.business.name">BUSINESS</h3>
-              <div class="pricing-card__price">
-                <span class="pricing-card__amount" data-i18n="pricing.business.price">29</span>
-                <span class="pricing-card__period" data-i18n="pricing.business.period">/month</span>
-              </div>
-            </div>
-            <p class="pricing-card__description" data-i18n="pricing.business.description">
-              For homes and offices that want full control of their devices and real-time monitoring.
-            </p>
-            <a href="#" class="btn btn--green" data-i18n="pricing.business.cta">Get started</a>
-            
-            <div class="pricing-card__features">
-              <ul class="pricing-features">
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.business.features.0">All Basic plan features</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.business.features.1">Up to 20 devices</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.business.features.2">Unlimited automations</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.business.features.3">Priority support 24/7</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.business.features.4">Advanced reports</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.business.features.5">External integrations</span>
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- ENTERPRISE PLAN -->
-          <article class="pricing-card">
-            <div class="pricing-card__header">
-              <h3 class="pricing-card__name" data-i18n="pricing.enterprise.name">ENTERPRISE</h3>
-              <div class="pricing-card__price">
-                <span class="pricing-card__amount" data-i18n="pricing.enterprise.price">39</span>
-                <span class="pricing-card__period" data-i18n="pricing.enterprise.period">/month</span>
-              </div>
-              <div class="pricing-card__price-custom">
-                <span class="pricing-card__cta-text" data-i18n="pricing.enterprise.description">
-                  For companies, buildings and large-scale projects.
-                </span>
-              </div>
-            </div>
-            <a href="#" class="btn btn--outline" data-i18n="pricing.enterprise.cta">Contact sales</a>
-            
-            <div class="pricing-card__features">
-              <ul class="pricing-features">
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.enterprise.features.0">Unlimited devices</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.enterprise.features.1">Unlimited automations</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.enterprise.features.2">Custom dashboard</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.enterprise.features.3">Guaranteed SLA</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.enterprise.features.4">ERP/BMS integration</span>
-                </li>
-                <li class="pricing-feature pricing-feature--available">
-                  <span class="pricing-feature__check">✓</span>
-                  <span data-i18n="pricing.enterprise.features.5">Dedicated account manager</span>
-                </li>
-              </ul>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         DOMINIO: cta
-         ============================================================ -->
-    <section class="cta" id="cta" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="cta__inner">
-
-          <div class="cta__content">
-            <span class="cta__label" data-i18n="cta.label">Team</span>
-            <h2 class="cta__heading" id="cta-heading" data-i18n="cta.heading">
-              Meet the people behind Vantage PMO
-            </h2>
-            <p class="cta__text" data-i18n="cta.text">
-              A team of engineers and project leaders passionate about making project management work better for everyone.
-            </p>
-            <div class="cta__actions">
-              <a href="#team" class="btn btn--outline-white" data-i18n="cta.cta2">Meet the team</a>
-            </div>
+            <p class="answer" data-i18n="ai.p4.answer">Beta Rollout is likely to miss its target. Based on current velocity, delivery is projected for Jun 3, 12 days late.</p>
           </div>
 
+          <form class="ask" id="askForm" action="Session_registration.html">
+            <label class="sr-only" for="askInput" data-i18n="ai.inputLabel">Ask Vantage AI</label>
+            <input id="askInput" name="q" type="text" autocomplete="off" placeholder="Ask Vantage AI…" data-i18n-placeholder="ai.input" />
+            <button class="ask__send" type="submit" aria-label="Send" data-i18n-aria="ai.send"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </form>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         DOMINIO: blog
-         ============================================================ -->
-    <section class="blog" id="blog" aria-labelledby="blog-heading">
-      <div class="container">
+    <!-- ============================================================ ABOUT -->
+    <section class="about paper" id="about" aria-labelledby="about-heading">
+      <div class="wrap about__grid">
+        <img class="about__img" src="public/assets/images/about/about.webp" alt="The Vantage PMO team working together" data-i18n-alt="about.imgAlt" width="960" height="1024" loading="lazy" decoding="async" />
+        <div class="about__copy">
+          <h2 class="h2" id="about-heading" data-i18n="about.heading">Built by engineers who understand projects</h2>
+          <p class="body-lg" data-i18n="about.text">Vantage PMO started with software engineers who saw the same problem everywhere: projects failed not from lack of skills, but from lack of clarity. We built Vantage PMO to fix that.</p>
+          <a href="#team" class="link"><span data-i18n="about.cta">Meet the team</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
 
-        <div class="blog__header">
-          <div class="blog__header-text">
-            <h2 class="blog__heading" id="blog-heading" data-i18n="blog.heading">
-              Stay ahead of what's next
-            </h2>
-            <p class="blog__subheading" data-i18n="blog.subheading">
-              Get insights on project management, leadership, and building better teams.
-            </p>
+    <!-- ============================================================ ONBOARDING (secuencia real: numeración permitida) -->
+    <section class="onboarding paper paper--alt" id="onboarding" aria-labelledby="onboarding-heading">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 class="h2" id="onboarding-heading" data-i18n="onboarding.heading">Getting started takes minutes, not months</h2>
+          <p class="lead" data-i18n="onboarding.subheading">Set up your workspace and bring your projects in. Vantage PMO handles the rest.</p>
+        </header>
+
+        <ol class="route" id="route">
+          <li class="route__stop">
+            <span class="route__node"><svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg></span>
+            <h3 class="route__title" data-i18n="onboarding.step1.title">Connect your projects to the platform</h3>
+            <p class="route__text" data-i18n="onboarding.step1.text">Import anything or start fresh. Onboard your teams with standardized templates.</p>
+          </li>
+          <li class="route__stop">
+            <span class="route__node"><svg class="icon" aria-hidden="true"><use href="#i-orbit"/></svg></span>
+            <h3 class="route__title" data-i18n="onboarding.step2.title">Watch your portfolio come into focus</h3>
+            <p class="route__text" data-i18n="onboarding.step2.text">See the status everywhere you need it: projects, tasks, plans.</p>
+          </li>
+          <li class="route__stop">
+            <span class="route__node"><svg class="icon" aria-hidden="true"><use href="#i-bars"/></svg></span>
+            <h3 class="route__title" data-i18n="onboarding.step3.title">Lead with confidence and data</h3>
+            <p class="route__text" data-i18n="onboarding.step3.text">Make decisions backed by intelligence, not habit.</p>
+          </li>
+        </ol>
+        <div class="route__cta">
+          <a href="Session_registration.html" class="btn btn--primary btn--lg"><span data-i18n="onboarding.cta">Create your workspace</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ TESTIMONIALS -->
+    <section class="voices paper" id="testimonials" aria-labelledby="testimonials-heading">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 class="h2" id="testimonials-heading" data-i18n="testimonials.heading">Real voices</h2>
+          <p class="lead" data-i18n="testimonials.subheading">What project leaders say about Vantage PMO</p>
+        </header>
+        <div class="voices__grid">
+          <figure class="voice">
+            <blockquote data-i18n="testimonials.t1.quote">We stopped losing track of deadlines the moment we switched. Now I sleep better.</blockquote>
+            <figcaption>
+              <img src="public/assets/images/testimonials/testimonial-2.webp" alt="" width="160" height="160" loading="lazy" decoding="async" />
+              <span><strong data-i18n="testimonials.t1.name">Maria Rodriguez</strong><span data-i18n="testimonials.t1.role">Team Lead</span></span>
+            </figcaption>
+          </figure>
+          <figure class="voice">
+            <blockquote data-i18n="testimonials.t2.quote">Visibility across all our projects went from chaotic to crystal clear in one week.</blockquote>
+            <figcaption>
+              <img src="public/assets/images/testimonials/testimonial-1.webp" alt="" width="160" height="160" loading="lazy" decoding="async" />
+              <span><strong data-i18n="testimonials.t2.name">James Carter</strong><span data-i18n="testimonials.t2.role">PMO Director</span></span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ PRICING -->
+    <section class="pricing paper paper--alt" id="pricing" aria-labelledby="pricing-heading">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 class="h2" id="pricing-heading" data-i18n="pricing.heading">Choose your plan</h2>
+          <p class="lead" data-i18n="pricing.subheading">No long-term contracts. Upgrade or cancel anytime.</p>
+        </header>
+
+        <div class="plans">
+          <article class="plan-card">
+            <h3 class="plan-card__name" data-i18n="pricing.basic.name">Basic</h3>
+            <p class="plan-card__price"><span class="plan-card__cur">$</span><span class="plan-card__amount">19</span><span class="plan-card__per" data-i18n="pricing.period">per month</span></p>
+            <p class="plan-card__desc" data-i18n="pricing.basic.description">For small teams that want to standardize how they run projects.</p>
+            <a href="Session_registration.html?plan=basic" class="btn btn--outline" data-i18n="pricing.cta">Get started</a>
+            <ul class="feats">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.basic.f1">Up to 10 active projects</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.basic.f2">Real-time project dashboards</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.basic.f3">Standardized project templates</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.basic.f4">Status reports</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.basic.f5">Email support</span></li>
+              <li class="is-off"><svg class="icon" aria-hidden="true"><use href="#i-minus"/></svg><span><span class="sr-only" data-i18n="pricing.notIncluded">Not included:</span> <span data-i18n="pricing.basic.x1">AI assistant</span></span></li>
+              <li class="is-off"><svg class="icon" aria-hidden="true"><use href="#i-minus"/></svg><span><span class="sr-only" data-i18n="pricing.notIncluded">Not included:</span> <span data-i18n="pricing.basic.x2">Integrations</span></span></li>
+            </ul>
+          </article>
+
+          <article class="plan-card plan-card--featured">
+            <p class="plan-card__badge" data-i18n="pricing.business.badge">Most popular</p>
+            <h3 class="plan-card__name" data-i18n="pricing.business.name">Business</h3>
+            <p class="plan-card__price"><span class="plan-card__cur">$</span><span class="plan-card__amount">29</span><span class="plan-card__per" data-i18n="pricing.period">per month</span></p>
+            <p class="plan-card__desc" data-i18n="pricing.business.description">For PMOs running a portfolio of projects across several teams.</p>
+            <a href="Session_registration.html?plan=business" class="btn btn--primary" data-i18n="pricing.cta">Get started</a>
+            <ul class="feats">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.business.f1">Everything in Basic</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.business.f2">Unlimited projects</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.business.f3">Portfolio health and risk view</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.business.f4">AI project assistant</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.business.f5">Automated stakeholder reports</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.business.f6">Jira, Slack and Teams integrations</span></li>
+            </ul>
+          </article>
+
+          <article class="plan-card">
+            <h3 class="plan-card__name" data-i18n="pricing.enterprise.name">Enterprise</h3>
+            <p class="plan-card__price"><span class="plan-card__cur">$</span><span class="plan-card__amount">39</span><span class="plan-card__per" data-i18n="pricing.period">per month</span></p>
+            <p class="plan-card__desc" data-i18n="pricing.enterprise.description">For organizations with several PMOs and large portfolios.</p>
+            <a href="Session_registration.html?plan=enterprise" class="btn btn--outline" data-i18n="pricing.enterprise.cta">Contact sales</a>
+            <ul class="feats">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.enterprise.f1">Everything in Business</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.enterprise.f2">Resource capacity planning</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.enterprise.f3">Delivery forecasting</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.enterprise.f4">Single sign-on and roles</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.enterprise.f5">Guaranteed SLA</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pricing.enterprise.f6">Dedicated account manager</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ INSIGHTS (blog) -->
+    <section class="insights paper" id="blog" aria-labelledby="blog-heading">
+      <div class="wrap">
+        <header class="insights__head">
+          <div>
+            <h2 class="h2" id="blog-heading" data-i18n="blog.heading">Stay ahead of what's next</h2>
+            <p class="lead" data-i18n="blog.subheading">Get insights on project management, leadership, and building better teams.</p>
           </div>
-          <a href="#" class="btn btn--green" data-i18n="blog.cta">Subscribe</a>
-        </div>
-
-        <div class="blog__grid">
-
-          <article class="blog-card">
-            <img class="blog-card__image" src="public/assets/images/blog/leadership.png" alt="Leadership article" />
-            <div class="blog-card__body">
-              <span class="blog-card__category" data-i18n="blog.post1.category">Leadership</span>
-              <h3 class="blog-card__title" data-i18n="blog.post1.title">
-                Why your PMO framework is slowing you down
-              </h3>
-              <p class="blog-card__excerpt" data-i18n="blog.post1.excerpt">
-                Most project offices were built for compliance, not speed.
-              </p>
-            </div>
+          <a href="Session_registration.html?intent=newsletter" class="btn btn--outline" data-i18n="blog.cta">Subscribe</a>
+        </header>
+        <div class="insights__grid">
+          <article class="post post--lead">
+            <img src="public/assets/images/blog/leadership.webp" alt="" width="800" height="491" loading="lazy" decoding="async" />
+            <h3 class="post__title" data-i18n="blog.post1.title">Why your PMO framework is slowing you down</h3>
+            <p class="post__cat" data-i18n="blog.post1.category">Leadership</p>
+            <p class="post__text" data-i18n="blog.post1.excerpt">Most project offices were built for compliance, not speed.</p>
           </article>
-
-          <article class="blog-card">
-            <img class="blog-card__image" src="public/assets/images/blog/teams.jpeg" alt="Teams article" />
-            <div class="blog-card__body">
-              <span class="blog-card__category" data-i18n="blog.post2.category">Teams</span>
-              <h3 class="blog-card__title" data-i18n="blog.post2.title">
-                The real cost of misaligned teams
-              </h3>
-              <p class="blog-card__excerpt" data-i18n="blog.post2.excerpt">
-                Misalignment isn't just frustrating — it shows up in your timelines.
-              </p>
-            </div>
+          <article class="post">
+            <img src="public/assets/images/blog/teams.webp" alt="" width="288" height="175" loading="lazy" decoding="async" />
+            <h3 class="post__title" data-i18n="blog.post2.title">The real cost of misaligned teams</h3>
+            <p class="post__cat" data-i18n="blog.post2.category">Teams</p>
+            <p class="post__text" data-i18n="blog.post2.excerpt">Misalignment isn't just frustrating: it shows up in your timelines.</p>
           </article>
-
-          <article class="blog-card">
-            <img class="blog-card__image" src="public/assets/images/blog/data.jpeg" alt="Data article" />
-            <div class="blog-card__body">
-              <span class="blog-card__category" data-i18n="blog.post3.category">Data</span>
-              <h3 class="blog-card__title" data-i18n="blog.post3.title">
-                Data-driven decisions in project management
-              </h3>
-              <p class="blog-card__excerpt" data-i18n="blog.post3.excerpt">
-                Moving from gut feelings to intelligence-backed choices changes everything.
-              </p>
-            </div>
+          <article class="post">
+            <img src="public/assets/images/blog/data.webp" alt="" width="324" height="156" loading="lazy" decoding="async" />
+            <h3 class="post__title" data-i18n="blog.post3.title">Data-driven decisions in project management</h3>
+            <p class="post__cat" data-i18n="blog.post3.category">Data</p>
+            <p class="post__text" data-i18n="blog.post3.excerpt">Moving from gut feelings to intelligence-backed choices changes everything.</p>
           </article>
-
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         DOMINIO: team
-         ============================================================ -->
-    <section class="team" id="team" aria-labelledby="team-heading">
-      <div class="container">
-
-        <div class="team__header">
-          <span class="label" data-i18n="team.label">Team</span>
-          <h2 class="team__heading" id="team-heading" data-i18n="team.heading">Meet the team</h2>
-          <p class="team__subheading" data-i18n="team.subheading">
-            Software Engineers building Vantage PMO.
-          </p>
-        </div>
-
-        <div class="team__grid">
-
-          <article class="team-card">
-            <div class="team-card__head">
-              <div class="team-card__avatar">
-                <img src="public/assets/images/team/Kirk.png" alt="Kirk Douglas"  />
-              </div>
-              <strong class="team-card__name" data-i18n="team.member1.name">Kirk Douglas</strong>
-            </div>
-            <div class="team-card__details">
-              <span class="team-card__role" data-i18n="team.member1.role">CTO</span>
-              <p class="team-card__bio" data-i18n="team.member1.bio">Backend developer with a passion for building scalable and efficient systems.</p>
-            </div>
-          </article>
-
-          <article class="team-card">
-            <div class="team-card__head">
-              <div class="team-card__avatar">
-                <img src="public/assets/images/team/Angiela.jpeg" alt=" Angiela Stephany" />
-              </div>
-              <strong class="team-card__name" data-i18n="team.member2.name"> Angiela Stephany</strong>
-            </div>
-            <div class="team-card__details">
-              <span class="team-card__role" data-i18n="team.member2.role">Head of Product</span>
-              <p class="team-card__bio" data-i18n="team.member2.bio">Designer passionate about creating intuitive and engaging user experiences.</p>
-            </div>
-          </article>
-
-          <article class="team-card">
-            <div class="team-card__head">
-              <div class="team-card__avatar">
-                <img src="public/assets/images/team/LionelM.jpeg" alt="Lionel Snayder" />
-              </div>
-              <strong class="team-card__name" data-i18n="team.member3.name">Lionel Snayder</strong>
-            </div>
-            <div class="team-card__details">
-              <span class="team-card__role" data-i18n="team.member3.role">Engineering Manager</span>
-              <p class="team-card__bio" data-i18n="team.member3.bio">Frontend developer with experience designing architecture diagrams.</p>
-            </div>
-          </article>
-
-          <article class="team-card">
-            <div class="team-card__head">
-              <div class="team-card__avatar">
-                <img src="public/assets/images/team/dylan.jpeg" alt="Mike Guillen" />
-              </div>
-              <strong class="team-card__name" data-i18n="team.member4.name">Mike Guillen</strong>
-            </div>
-            <div class="team-card__details">
-              <span class="team-card__role" data-i18n="team.member4.role">Engineering Manager</span>
-              <p class="team-card__bio" data-i18n="team.member4.bio">Full-stack developer who solves problems and designs intuitive interfaces.</p>
-            </div>
-          </article>
-
-          <article class="team-card">
-            <div class="team-card__head">
-              <div class="team-card__avatar">
-                <img src="public/assets/images/team/Rafael.png" alt="Rafael Agustin" />
-              </div>
-              <strong class="team-card__name" data-i18n="team.member5.name">Rafael Agustin</strong>
-            </div>
-            <div class="team-card__details">
-              <span class="team-card__role" data-i18n="team.member5.role">Engineering Manager</span>
-              <p class="team-card__bio" data-i18n="team.member5.bio">Expert backend developer in building robust and scalable systems.</p>
-            </div>
-          </article>
-
-        </div>
+    <!-- ============================================================ TEAM -->
+    <section class="team paper paper--alt" id="team" aria-labelledby="team-heading">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 class="h2" id="team-heading" data-i18n="team.heading">Meet the team</h2>
+          <p class="lead" data-i18n="team.subheading">Software engineers building Vantage PMO.</p>
+        </header>
+        <ul class="crew">
+          <li class="member">
+            <img src="public/assets/images/team/Kirk.webp" alt="" width="360" height="360" loading="lazy" decoding="async" />
+            <h3 class="member__name">Kirk Douglas</h3>
+            <p class="member__role" data-i18n="team.member1.role">CTO</p>
+            <p class="member__bio" data-i18n="team.member1.bio">Backend developer with a passion for building scalable and efficient systems.</p>
+          </li>
+          <li class="member">
+            <img src="public/assets/images/team/Angiela.webp" alt="" width="360" height="360" loading="lazy" decoding="async" />
+            <h3 class="member__name">Angiela Stephany</h3>
+            <p class="member__role" data-i18n="team.member2.role">Head of Product</p>
+            <p class="member__bio" data-i18n="team.member2.bio">Designer passionate about creating intuitive and engaging user experiences.</p>
+          </li>
+          <li class="member">
+            <img src="public/assets/images/team/LionelM.webp" alt="" width="360" height="360" loading="lazy" decoding="async" />
+            <h3 class="member__name">Lionel Snayder</h3>
+            <p class="member__role" data-i18n="team.member3.role">Engineering Manager</p>
+            <p class="member__bio" data-i18n="team.member3.bio">Frontend developer with experience designing architecture diagrams.</p>
+          </li>
+          <li class="member">
+            <img src="public/assets/images/team/dylan.webp" alt="" width="360" height="360" loading="lazy" decoding="async" />
+            <h3 class="member__name">Mike Guillen</h3>
+            <p class="member__role" data-i18n="team.member4.role">Engineering Manager</p>
+            <p class="member__bio" data-i18n="team.member4.bio">Full-stack developer who solves problems and designs intuitive interfaces.</p>
+          </li>
+          <li class="member">
+            <img src="public/assets/images/team/Rafael.webp" alt="" width="360" height="360" loading="lazy" decoding="async" />
+            <h3 class="member__name">Rafael Agustin</h3>
+            <p class="member__role" data-i18n="team.member5.role">Engineering Manager</p>
+            <p class="member__bio" data-i18n="team.member5.bio">Expert backend developer in building robust and scalable systems.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
+    <!-- ============================================================ FINAL CTA -->
+    <section class="closing plate" id="cta" aria-labelledby="cta-heading">
+      <div class="graticule" aria-hidden="true"></div>
+      <div class="closing__rings" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+      <div class="wrap closing__inner">
+        <h2 class="closing__title" id="cta-heading" data-i18n="cta.heading">See your whole portfolio from one vantage point.</h2>
+        <p class="lead" data-i18n="cta.text">Create your workspace, bring your projects in, and know where every one of them stands today.</p>
+        <div class="hero__actions">
+          <a href="Session_registration.html" class="btn btn--primary btn--lg"><span data-i18n="hero.cta_primary">Start now</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a href="https://vantagepmo-297ec.web.app" class="btn btn--ghost btn--lg" data-i18n="cta.login">I already have an account</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- ============================================================
-       DOMINIO: footer
-       ============================================================ -->
-  <footer class="footer" id="footer">
-    <div class="container">
-
-      <div class="footer__top">
-
-        <div class="footer__brand">
-          <a href="/" class="footer__logo" aria-label="Vantage PMO">
-            <img src="public/assets/images/logo/dark-logo.png" alt="Vantage PMO" class="footer__logo-img" />
-          </a>
-          <p class="footer__tagline" data-i18n="footer.tagline">
-            Get insights on project management, directional and steady.
-          </p>
-        </div>
-
-        <div class="footer__cols">
-
-          <div class="footer__col">
-            <h4 class="footer__col-title" data-i18n="footer.col1.title">Product</h4>
-            <ul class="footer__list">
-              <li><a href="#" data-i18n="footer.col1.link1">Home</a></li>
-              <li><a href="#" data-i18n="footer.col1.link2">Platform</a></li>
-              <li><a href="#" data-i18n="footer.col1.link3">Pricing</a></li>
-              <li><a href="#" data-i18n="footer.col1.link4">Blog</a></li>
-            </ul>
-          </div>
-
-          <div class="footer__col">
-            <h4 class="footer__col-title" data-i18n="footer.col2.title">About us</h4>
-            <ul class="footer__list">
-              <li><a href="#" data-i18n="footer.col2.link1">Our story</a></li>
-              <li><a href="#" data-i18n="footer.col2.link2">Team</a></li>
-              <li><a href="#" data-i18n="footer.col2.link3">Careers</a></li>
-              <li><a href="#" data-i18n="footer.col2.link4">Contact</a></li>
-            </ul>
-          </div>
-
-          <div class="footer__col">
-            <h4 class="footer__col-title" data-i18n="footer.col3.title">Follow us</h4>
-            <ul class="footer__list">
-              <li><a href="#" data-i18n="footer.col3.link1">Facebook</a></li>
-              <li><a href="#" data-i18n="footer.col3.link2">Instagram</a></li>
-              <li><a href="#" data-i18n="footer.col3.link3">Twitter</a></li>
-              <li><a href="#" data-i18n="footer.col3.link4">LinkedIn</a></li>
-            </ul>
-          </div>
-
-        </div>
+  <!-- ============================================================ FOOTER -->
+  <footer class="footer plate">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <img src="public/assets/images/logo/logo-on-dark.webp" alt="Vantage PMO" width="545" height="112" loading="lazy" />
+        <p data-i18n="footer.tagline">Clarity for every project, from one vantage point.</p>
       </div>
-
-      <div class="footer__bottom">
-        <p class="footer__copyright" data-i18n="footer.copyright">
-          © 2026 VantagePMO. All rights reserved.
-        </p>
-        <nav class="footer__legal" aria-label="Legal">
-          <a href="#" data-i18n="footer.privacy">Privacy policy</a>
-          <a href="#" data-i18n="footer.terms">Terms of service</a>
-          <a href="#" data-i18n="footer.cookies">Cookie settings</a>
-        </nav>
-      </div>
-
+      <nav class="footer__col" aria-labelledby="f1">
+        <h2 id="f1" data-i18n="footer.col1">Product</h2>
+        <a href="#platform" data-i18n="nav.platform">Platform</a>
+        <a href="#assistant" data-i18n="nav.assistant">AI assistant</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#blog" data-i18n="footer.insights">Insights</a>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f2">
+        <h2 id="f2" data-i18n="footer.col2">Company</h2>
+        <a href="#about" data-i18n="footer.about">Our story</a>
+        <a href="#team" data-i18n="nav.team">Team</a>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f3">
+        <h2 id="f3" data-i18n="footer.col3">Account</h2>
+        <a href="https://vantagepmo-297ec.web.app" data-i18n="nav.login">Log in</a>
+        <a href="Session_registration.html" data-i18n="footer.signup">Create an account</a>
+      </nav>
+    </div>
+    <div class="wrap footer__base">
+      <p data-i18n="footer.copyright">© 2026 Vantage PMO. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Scripts (orden: i18n → app) -->
   <script src="public/js/i18n.js"></script>
+  <script src="public/js/orrery.js"></script>
   <script src="public/js/main.js"></script>
-  <script>
-  // Permite activar los prompts de la sección AI con teclado (Enter / Espacio)
-  function enableKeyboardActivation(selector) {
-    document.querySelectorAll(selector).forEach(function (el) {
-      el.setAttribute('role', 'button');
-      el.setAttribute('tabindex', '0');
-      el.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          el.click();
-        }
-      });
-    });
-  }
-  enableKeyboardActivation('.ai-prompt');
-</script>
 </body>
 </html>
